@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 11;
-const TOKEN_KEY = 'ROMANTICIST STRONG';
+const TOKEN_KEY = 'romantisist strong';
 
 
 
@@ -17,7 +17,7 @@ const checkPassword = async (password, password_digest) => {
 
 const genToken = (data) => {
   const token = jwt.sign(data, TOKEN_KEY);
-  return token;
+  return token
 };
 
 const restrict = (req, res, next) => {
@@ -31,10 +31,12 @@ const restrict = (req, res, next) => {
     res.status(403).send('Unauthorized');
   }
 
+}
 
-  module.exports = {
-    hashPassword,
-    checkPassword,
-    genToken,
-    restrict
-  }
+module.exports = {
+  hashPassword,
+  checkPassword,
+  genToken,
+  restrict,
+  
+}
