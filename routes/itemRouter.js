@@ -31,7 +31,7 @@ itemRouter.route('/:wishlistId/items')
 itemRouter.route('/:wishlistId/items/:itemId')
   .get(async (req, res, next) => {
     try {
-      const post = await Item.findByPk(req.params.id);
+      const post = await Item.findByPk(req.params.itemId);
       res.json(post);
     } catch (e) {
       next(e)
@@ -39,7 +39,7 @@ itemRouter.route('/:wishlistId/items/:itemId')
   })
   .put(async (req, res, next) => {
     try {
-      const post = await Item.findByPk(req.params.id);
+      const post = await Item.findByPk(req.params.itemId);
       await post.update(req.body)
       res.json(post)
     } catch (e) {
