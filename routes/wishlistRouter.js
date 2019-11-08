@@ -31,7 +31,7 @@ wishlistRouter.route('/')
 wishlistRouter.route('/:wishlistId')
   .get(async (req, res, next) => {
     try {
-      const post = await Wishlist.findByPk(req.params.id);
+      const post = await Wishlist.findByPk(req.params.wishlistId);
       res.json(post);
     } catch (e) {
       next(e)
@@ -39,7 +39,7 @@ wishlistRouter.route('/:wishlistId')
   })
   .put(async (req, res, next) => {
     try {
-      const post = await Wishlist.findByPk(req.params.id);
+      const post = await Wishlist.findByPk(req.params.wishlistId);
       await post.update(req.body)
       res.json(post)
     } catch (e) {
