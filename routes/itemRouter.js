@@ -50,7 +50,7 @@ itemRouter.route('/:wishlistId/items/:itemId')
     try {
       const post = await Item.destroy({
         where: {
-          id: req.params.id
+          id: req.params.itemId
         }
       })
       res.json(post)
