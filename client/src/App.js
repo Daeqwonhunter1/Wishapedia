@@ -1,16 +1,23 @@
 import React from 'react';
 import './App.css';
-import { showWishLists, postWishList, destroyOneWishList, UpdateOneWishList } from './services/api-helper'
+import {
+  showWishLists, postWishList, destroyOneWishList, UpdateOneWishList,
+  loginUser, registerUser, verifyUser
+} from './services/api-helper'
 import { Route, Link, withRouter } from 'react-router-dom';
 import WishlistList from './components/WishlistList';
 import CreateWishlist from './components/CreateWishlist';
 import SingleWishList from './components/SingleWishlist';
 import UpdateWishlistForm from './components/UpdateWishlistForm';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
+
 
 
 
 class App extends React.Component {
   state = {
+    currentUser: null,
     currentWishlist: null,
     wishlists: [],
     currentItem: null,
@@ -29,8 +36,40 @@ class App extends React.Component {
     }
 
   }
+
+  // =============== AUTH ===============
+
+  handleLogin = async (loginData) => {
+    const currentUser = await loginUser(loginData);
+    this.setState({ currentUser })
+    this.props.history.push("/")
+  }
+
+  handleRegister = async (registerData) => {
+    const currentUser = await registerUser(registerData);
+    this.setState({ currentUser })
+    this.props.history.push("/")
+  }
+
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      this.setState({ currentUser })
+    }
+    console.log(`current user = ${this.state.currentUser}`)
+  }
+
+  handleLogout = () => {
+    this.setState({
+      currentUser: null
+    })
+    localStorage.removeItem('authToken')
+  }
+
   componentDidMount() {
     this.getAllWishlists();
+    this.handleVerify()
+
   }
 
   // =============== HANDLE CHANGE ===============
@@ -117,9 +156,31 @@ class App extends React.Component {
     return (
       <div className="app" >
         <header>
-          <h2>Wishapedia</h2>
+          <Link to="/"><h2>Wishapedia</h2></Link>
+          {
+            this.state.currentUser ?
+              <div>
+                <p>{`Hello, ${this.state.currentUser.username}`}</p>
+                <button onClick={this.handleLogout}>Logout</button>
+              </div>
+              :
+              <Link to='/login'><button>Login/register</button></Link>
+          }
+          <hr></hr>
+
         </header>
         <main>
+          {/* ================= Auth Routes ====================== */}
+          <Route path='/login' render={() => (
+            <LoginForm
+              handleLogin={this.handleLogin}
+            />
+          )} />
+          <Route path='/register' render={() => (
+            <RegisterForm
+              handleRegister={this.handleRegister}
+            />
+          )} />
 
           {/* ================= Site Routes ====================== */}
 
@@ -153,7 +214,10 @@ class App extends React.Component {
             />
           )} />
         </main>
-        <footer> 2019 © Crazy Demons</footer>
+        <footer>
+          <hr></hr>
+          <small>2019 © Crazy Demons</small>
+        </footer>
 
       </div>
     );
