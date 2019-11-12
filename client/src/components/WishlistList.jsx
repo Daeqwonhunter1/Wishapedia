@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import  CreateItem  from './CreateItem';
+import CreateItem from './CreateItem';
 
 export default function WishlistList(props) {
   const { wishlists } = props
@@ -19,7 +19,7 @@ export default function WishlistList(props) {
           <Link to={`/wishlists/${wishlist.id}`}><h3>wishlist name: {wishlist.name}</h3></Link>
           <p>description: {wishlist.description}</p>
           <p>occasion: {wishlist.type}</p>
-          <Link to="/wishlists/:wishlistId/items/new">
+          <Link to={`/wishlists/{wishlist.id}/items/new`}>
             <button>Add Item</button>
           </Link>
 

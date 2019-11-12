@@ -16,14 +16,15 @@ class CreateItem extends Component {
   }
 
   render() {
-    const { name, image_url, url, price,comments } = this.state;
+    const { name, image_url, url, price, comments } = this.state;
+    console.log(this.props)
     return (
     <div>
         <h2>CreateItem component</h2>
         
       <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.createItem(this.state);
+          this.props.createItem(this.props.currentWishListId,this.state);
         }}>
           <input placeholder="Name Of The Item"
             type="text"

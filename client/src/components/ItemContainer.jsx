@@ -21,7 +21,7 @@ class ItemContainer extends Component {
         name: " ",
         image_url: " ",
         url: " ",
-        price: " ",
+        price:  0,
         comments: " "
       }
     }
@@ -42,15 +42,15 @@ class ItemContainer extends Component {
 
   // =============== Create ===============
 
-  createItem = async (name, image_url, url, price, comments) => {
-    console.log(name, image_url,url,price,comments)
-    this.setState({ itemFormData: { name, image_url, url, price, comments } })
-    const newItems = await postNewItemInWishlist(1,this.state.itemFormData);
+  createItem = async (id,newItem) => {
+    
+    // this.setState({ itemFormData: { name, image_url, url, price, comments } })
+    const newItems = await postNewItemInWishlist(id,newItem);
     this.setState(prevState => ({
       items: [...prevState.items, newItems]
     }))
     console.log(newItems)
-    // this.props.history.push(`/wishlists/${wishListId}/items`)
+    //  this.props.history.push(`/wishlists/${wishListId}/items`)
   }
 
   // =============== Delete ===============
@@ -115,6 +115,7 @@ class ItemContainer extends Component {
         <Route path='/wishlists/:wishlistId/items/new' render={() => (
           <CreateItem
             createItem={this.createItem}
+            currentWishListId = {this.props.match.params.wishListId}
 
           />
         )} />

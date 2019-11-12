@@ -45,6 +45,9 @@ export default class SingleWishlist extends Component {
                 </>
               )
             }
+            <Link to={`/wishlists/${currentWishlist.id}/items/new`}>
+              <button>Add Item</button>
+            </Link>
           </>
         )}
       </div>
