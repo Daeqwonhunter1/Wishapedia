@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class CreateItem extends Component(props) {
+class CreateItem extends Component {
   state = {
     name: "",
     image_url: "",
@@ -15,45 +16,49 @@ export default class CreateItem extends Component(props) {
   }
 
   render() {
-    const { name, image_url, url, price,comments } = this.state;
+    const { name, image_url, url, price, comments } = this.state;
+    console.log(this.props)
     return (
-    <div>
+      <div>
         <h2>CreateItem component</h2>
-        
-      <form onSubmit={(e) => {
+
+        <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.createItem(this.state);
+          this.props.createItem(this.props.currentWishListId, this.state);
         }}>
           <input placeholder="Name Of The Item"
             type="text"
             name="name"
             onChange={this.handleChange}
-            value={name}/>
+            value={name} />
           <input placeholder="Item Image"
             type="text"
-            name="name"
+            name="image_url"
             onChange={this.handleChange}
-            value={image_url}/>
+            value={image_url} />
           <input placeholder="Item Link"
             type="text"
-            name="name"
+            name="url"
             onChange={this.handleChange}
-            value={url}/>
+            value={url} />
           <input placeholder="Price"
             type="text"
-            name="name"
+            name="price"
             onChange={this.handleChange}
             value={price} />
           <input placeholder="Comments"
             type="text"
-            name="name"
+            name="comments"
             onChange={this.handleChange}
             value={comments} />
-          
-        <button>
-          Create
+
+          <button>
+            Create
         </button>
-      </form>
-    </div>
-  )}
+        </form>
+      </div>
+    )
+  }
 }
+
+export default withRouter(CreateItem)

@@ -1,16 +1,19 @@
 const {
   Router
 } = require('express');
-const itemRouter = Router();
+const itemRouter = Router({
+  mergeParams: true
+});
 const {
-  Item
+  Item,
+  Wishlist
 } = require('../models.js')
 const {
   restrict
 } = require('../services/auth')
 
 
-itemRouter.route('/:wishlistId/items')
+itemRouter.route('/')
   .get(async (req, res, next) => {
     try {
       const posts = await Item.findAll();
@@ -21,14 +24,17 @@ itemRouter.route('/:wishlistId/items')
   })
   .post(async (req, res, next) => {
     try {
-      const post = await Item.create(req.body);
-      res.json(post);
+      const wishlistId = req.params.wishlistId
+      const wishlist = await Wishlist.findByPk(wishlistId)
+      const item = await Item.create(req.body);
+      await item.setWishlist(wishlist)
+      res.json(item);
     } catch (e) {
       next(e)
     }
   })
 
-itemRouter.route('/:wishlistId/items/:itemId')
+itemRouter.route(':itemId')
   .get(async (req, res, next) => {
     try {
       const post = await Item.findByPk(req.params.itemId);
