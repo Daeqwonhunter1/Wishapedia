@@ -7,6 +7,7 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import WishlistContainer from './components/WishlistContainer';
+import ItemContainer from './components/ItemContainer';
 
 
 
@@ -105,6 +106,7 @@ class App extends React.Component {
           )} />
 
           <WishlistContainer currentUser={this.state.currentUser} />
+          <ItemContainer currentUser={this.state.currentUser} />
         </main>
         <footer>
           <hr></hr>

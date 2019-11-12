@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class CreateItem extends Component(props) {
+class CreateItem extends Component {
   state = {
     name: "",
     image_url: "",
@@ -31,22 +32,22 @@ export default class CreateItem extends Component(props) {
             value={name}/>
           <input placeholder="Item Image"
             type="text"
-            name="name"
+            name="image_url"
             onChange={this.handleChange}
             value={image_url}/>
           <input placeholder="Item Link"
             type="text"
-            name="name"
+            name="url"
             onChange={this.handleChange}
             value={url}/>
           <input placeholder="Price"
             type="text"
-            name="name"
+            name="price"
             onChange={this.handleChange}
             value={price} />
           <input placeholder="Comments"
             type="text"
-            name="name"
+            name="comments"
             onChange={this.handleChange}
             value={comments} />
           
@@ -57,3 +58,5 @@ export default class CreateItem extends Component(props) {
     </div>
   )}
 }
+
+export default withRouter (CreateItem)
