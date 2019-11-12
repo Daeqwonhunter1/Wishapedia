@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 app.use('/wishlists', wishlistRouter);
 app.use('/auth', userRouter);
-app.use('/wishlists', itemRouter);
+app.use('/wishlists/:wishlistId/items', itemRouter);
 
 
 ///error handling///

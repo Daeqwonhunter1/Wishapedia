@@ -19,28 +19,28 @@ class CreateItem extends Component {
     const { name, image_url, url, price, comments } = this.state;
     console.log(this.props)
     return (
-    <div>
+      <div>
         <h2>CreateItem component</h2>
-        
-      <form onSubmit={(e) => {
+
+        <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.createItem(this.props.currentWishListId,this.state);
+          this.props.createItem(this.props.currentWishListId, this.state);
         }}>
           <input placeholder="Name Of The Item"
             type="text"
             name="name"
             onChange={this.handleChange}
-            value={name}/>
+            value={name} />
           <input placeholder="Item Image"
             type="text"
             name="image_url"
             onChange={this.handleChange}
-            value={image_url}/>
+            value={image_url} />
           <input placeholder="Item Link"
             type="text"
             name="url"
             onChange={this.handleChange}
-            value={url}/>
+            value={url} />
           <input placeholder="Price"
             type="text"
             name="price"
@@ -51,13 +51,14 @@ class CreateItem extends Component {
             name="comments"
             onChange={this.handleChange}
             value={comments} />
-          
-        <button>
-          Create
+
+          <button>
+            Create
         </button>
-      </form>
-    </div>
-  )}
+        </form>
+      </div>
+    )
+  }
 }
 
-export default withRouter (CreateItem)
+export default withRouter(CreateItem)

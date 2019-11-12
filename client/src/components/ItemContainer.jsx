@@ -45,7 +45,7 @@ class ItemContainer extends Component {
   createItem = async (id, newItem) => {
 
     // this.setState({ itemFormData: { name, image_url, url, price, comments } })
-    const newItems = await postNewItemInWishlist(1, newItem);
+    const newItems = await postNewItemInWishlist(id, newItem);
     this.setState(prevState => ({
       items: [...prevState.items, newItems]
     }))
@@ -112,10 +112,10 @@ class ItemContainer extends Component {
             currentUser={this.props.currentUser}
           />
         }} /> */}
-        <Route path='/wishlists/:wishlistId/items/new' render={() => (
+        <Route path='/wishlists/:wishlistId/items/new' render={(props) => (
           <CreateItem
             createItem={this.createItem}
-            currentWishListId={this.props.match.params.wishListId}
+            currentWishListId={props.match.params.wishlistId}
 
           />
         )} />
