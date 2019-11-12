@@ -3,7 +3,7 @@ const {
 } = require('express');
 const itemRouter = Router();
 const {
-  Item
+  Item,Wishlist
 } = require('../models.js')
 const {
   restrict
@@ -21,8 +21,11 @@ itemRouter.route('/:wishlistId/items')
   })
   .post(async (req, res, next) => {
     try {
-      const post = await Item.create(req.body);
-      res.json(post);
+      const wishlistId = req.params.wishlistId
+      const wishlist = await Wishlist.findByPk(wishlistId) 
+      const item = await Item.create(req.body);
+      await item.setWishlist(wishlist)
+      res.json(item);
     } catch (e) {
       next(e)
     }

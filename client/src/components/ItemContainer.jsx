@@ -4,7 +4,7 @@ import UpdateItemForm from './UpdateItemForm';
 import CreateItem from './CreateItem';
 import ItemList from './ItemList';
 import SingleWishList from './SingleWishlist'
-import {UpdateOneItem,showItemsInWishList, showitemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
+import { UpdateOneItem, showItemsInWishList, showitemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
   from '../services/api-helper';
 
 
@@ -21,7 +21,7 @@ class ItemContainer extends Component {
         name: " ",
         image_url: " ",
         url: " ",
-        price:  0,
+        price: 0,
         comments: " "
       }
     }
@@ -42,10 +42,10 @@ class ItemContainer extends Component {
 
   // =============== Create ===============
 
-  createItem = async (id,newItem) => {
-    
+  createItem = async (id, newItem) => {
+
     // this.setState({ itemFormData: { name, image_url, url, price, comments } })
-    const newItems = await postNewItemInWishlist(id,newItem);
+    const newItems = await postNewItemInWishlist(1, newItem);
     this.setState(prevState => ({
       items: [...prevState.items, newItems]
     }))
@@ -80,7 +80,7 @@ class ItemContainer extends Component {
 
   // =============== Set State Helper ===============
 
-  setItemFormData = (wishlist,itemId,items) => {
+  setItemFormData = (wishlist, itemId, items) => {
     this.setState({
       itemsFormData: {
         name: items.name,
@@ -115,7 +115,7 @@ class ItemContainer extends Component {
         <Route path='/wishlists/:wishlistId/items/new' render={() => (
           <CreateItem
             createItem={this.createItem}
-            currentWishListId = {this.props.match.params.wishListId}
+            currentWishListId={this.props.match.params.wishListId}
 
           />
         )} />
