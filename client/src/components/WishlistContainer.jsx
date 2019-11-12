@@ -83,7 +83,7 @@ class WishlistContainer extends Component {
 
   setWishlistFormData = (wishlist) => {
     this.setState({
-      speakerFormData: {
+      wishlistFormData: {
         name: wishlist.name,
         description: wishlist.description,
         type: wishlist.type
