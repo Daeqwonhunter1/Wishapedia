@@ -99,15 +99,16 @@ class WishlistContainer extends Component {
         <Route exact path='/' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
         <Route exact path='/wishlists' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
 
-        <Route exact path='/wishlists/:wishlists' render={(props) => {
-          const wishlists = props.match.params.id;
-          const wishlist = this.state.wishlists.find(wishlist => {
-            return wishlist.id === parseInt(wishlists)
+        <Route exact path='/wishlists/:wishlistId' render={(props) => {
+          const wishlistId = props.match.params.wishlistId;
+          const currentWishlist = this.state.wishlists.find(wishlist => {
+            return wishlist.id === parseInt(wishlistId)
           })
           return <SingleWishList
             setWishlistFormData={this.setWishlistFormData}
-            destroyOneWishList={this.destroyOneWishList}
-            wishlists={wishlist}
+            destroyWishlist={this.destroyWishlist}
+            currentWishlist={currentWishlist}
+            currentUser={this.props.currentUser}
           />
         }} />
         <Route path='/wishlists/new' render={() => (

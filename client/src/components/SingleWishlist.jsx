@@ -7,7 +7,8 @@ export default class SingleWishlist extends Component {
   }
 
   setCurrentWishlist = () => {
-    const currentWishlist = this.props.wishlists.find(wishlist => wishlist.id === parseInt(this.props.wishlistId))
+    console.log(this.props);
+    const currentWishlist = this.props.currentWishlist
     this.setState({ currentWishlist })
   }
 
@@ -25,20 +26,15 @@ export default class SingleWishlist extends Component {
     const { currentWishlist } = this.state;
     const { currentUser } = this.props;
 
-    console.log(currentWishlist);
-    console.log(currentUser);
-
     return (
       <div>
         <h2>SingleWishlist component</h2>
 
         {currentWishlist && (
           <>
-            <h1>{currentWishlist.title}</h1>
-            <img src={currentWishlist.image_url} />
+            <h3>{currentWishlist.name}</h3>
+            <p>{currentWishlist.type} </p>
             <p>{currentWishlist.description}</p>
-            <h3>Fun Fact!</h3>
-            <p>{currentWishlist.fun_fact}</p>
             {
               currentUser && currentUser.id === currentWishlist.userId && (
                 <>
