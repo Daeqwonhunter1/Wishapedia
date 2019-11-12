@@ -7,6 +7,11 @@ export default function WishlistList(props) {
   return (
     <div>
 
+      <Link to="/wishlists/new">
+        <button>Add Wishlist</button>
+      </Link>
+
+
       <h2>WishlistList component</h2>
 
       {wishlists && wishlists.map(wishlist =>
