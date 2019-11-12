@@ -13,7 +13,9 @@ export default function WishlistList(props) {
         <div className="wishlist" key={wishlist.id}>
           <Link to={`/wishlists/${wishlist.id}`}><h3>wishlist name: {wishlist.name}</h3></Link>
           <p>description: {wishlist.description}</p>
-          <p>occassion: {wishlist.type}</p>
+          <p>occasion: {wishlist.type}</p>
+          <button>Add Item</button>
+
         </div>
       )}
 
