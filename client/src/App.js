@@ -1,23 +1,119 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
+import {
+  loginUser, registerUser, verifyUser
+} from './services/api-helper'
+import { Route, Link, withRouter } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
+import WishlistContainer from './components/WishlistContainer';
 
-export default class App extends React.Component {
+
+
+
+class App extends React.Component {
   state = {
-    message: ""
+    currentUser: null,
+    currentItem: null,
+    items: [],
+    itemFormData: {
+      name: null,
+      image_url: null,
+      url: null,
+      price: null,
+      comments: null
+    }
+
   }
 
-  componentDidMount = async () => {
-    const message = await axios.get('http://localhost:3000')
-    this.setState({ message: message.data.message })
+  // =============== AUTH ===============
+
+  handleLogin = async (loginData) => {
+    const currentUser = await loginUser(loginData);
+    this.setState({ currentUser })
+    this.props.history.push("/")
   }
+
+  handleRegister = async (registerData) => {
+    const currentUser = await registerUser(registerData);
+    this.setState({ currentUser })
+    this.props.history.push("/")
+  }
+
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      this.setState({ currentUser })
+    }
+    console.log(`current user = ${this.state.currentUser}`)
+  }
+
+  handleLogout = () => {
+    this.setState({
+      currentUser: null
+    })
+    localStorage.removeItem('authToken')
+  }
+
+  componentDidMount() {
+    this.handleVerify()
+
+  }
+
+  // =============== HANDLE CHANGE ===============
+
+  handleItemChange = (e) => {
+    const { name, value } = e.target;
+    this.setState(prevState => ({
+      itemFormData: {
+        ...prevState.itemFormData,
+        [name]: value
+      }
+    }))
+  }
+
+  // =============== Render ===============
 
   render() {
     return (
       <div className="app" >
-        <h2>{this.state.message}</h2>
+        <header>
+          <Link to="/"><h2>Wishapedia</h2></Link>
+          {
+            this.state.currentUser ?
+              <div>
+                <p>{`Hello, ${this.state.currentUser.username}`}</p>
+                <button onClick={this.handleLogout}>Logout</button>
+              </div>
+              :
+              <Link to='/login'><button>Login/register</button></Link>
+          }
+          <hr></hr>
+
+        </header>
+        <main>
+          {/* ================= Auth Routes ====================== */}
+          <Route path='/login' render={() => (
+            <LoginForm
+              handleLogin={this.handleLogin}
+            />
+          )} />
+          <Route path='/register' render={() => (
+            <RegisterForm
+              handleRegister={this.handleRegister}
+            />
+          )} />
+
+          <WishlistContainer currentUser={this.state.currentUser} />
+        </main>
+        <footer>
+          <hr></hr>
+          <small>2019 © Crazy Demons</small>
+        </footer>
+
       </div>
     );
   }
 }
 
+export default withRouter(App);
