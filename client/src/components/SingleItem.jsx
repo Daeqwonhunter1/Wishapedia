@@ -24,11 +24,11 @@ export default class SingleItem extends Component {
 
   render() {
     const { currentItem } = this.state;
-    const { currentUser } = this.props;
+    // const { currentUser } = this.props;
 
     return (
       <div>
-        <h2>SingleWishlist component</h2>
+        <h2>Single Item component</h2>
 
         {currentItem && (
           <>
@@ -37,16 +37,21 @@ export default class SingleItem extends Component {
             <p>{currentItem.url} </p>
             <p>{currentItem.price}</p>
             <p>{currentItem.comments}</p>
-            {
+
+
+
+            {/* {
               currentUser && currentUser.id === currentItem.userId && (
                 <>
                   <button onClick={() => {
                     this.props.destroyItem(currentItem.id)
-                  }}>Delete</button>
-                  <Link to={`/posts/${currentItem.id}/edit`}><button>Edit</button></Link>
+                  }}>Delete Item</button>
+                  <Link to={`/posts/${currentItem.id}/edit`}>
+                    <button>Edit</button>
+                  </Link>
                 </>
               )
-            }
+            } */}
           </>
         )}
       </div>

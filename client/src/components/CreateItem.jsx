@@ -24,7 +24,7 @@ class CreateItem extends Component {
 
         <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.createItem(this.props.currentWishListId, this.state);
+          this.props.createItem(this.props.currentWishlistId, this.state);
         }}>
           <input placeholder="Name Of The Item"
             type="text"

@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { showItemsInWishList } from '../services/api-helper'
 import ItemList from './ItemList';
+import { UpdateOneItem, showItemsInWishlist, showOneItemFromWishlist, postNewItemInWishlist, destroyOneItem }
+  from '../services/api-helper';
 
 export default class SingleWishlist extends Component {
   state = {
     currentWishlist: null,
     currentItems: []
   }
-
+  destroyItem = async (wishlistId, itemId) => {
+    await destroyOneItem(wishlistId, itemId);
+    this.setState(prevState => ({
+      items: prevState.currentItems.filter(items => {
+        return items.id !== parseInt(itemId)
+      })
+    }))
+    // this.props.history.push(`/wishlists/`)
+  }
 
   setCurrentWishlist = async () => {
     console.log(this.props);
@@ -17,7 +26,7 @@ export default class SingleWishlist extends Component {
     this.setState({ currentWishlist })
 
 
-    const items = await showItemsInWishList(this.props.wishlistId);
+    const items = await showItemsInWishlist(this.props.wishlistId);
 
     const newItems = items.filter(item =>
       item.wishlistId === parseInt(this.props.wishlistId))
@@ -27,7 +36,7 @@ export default class SingleWishlist extends Component {
 
   setCurrentItemlist = async () => {
 
-    const allItems = await showItemsInWishList(this.props.wishlistId);
+    const allItems = await showItemsInWishlist(this.props.wishlistId);
 
     const currentItems = allItems.filter(item =>
       item.wishlistId === parseInt(this.props.wishlistId))
@@ -76,7 +85,12 @@ export default class SingleWishlist extends Component {
           </>
         )}
 
-        <ItemList items={this.state.currentItems} />
+          <ItemList
+            items={this.state.currentItems}
+            destroyItem={this.destroyItem}
+          />
+
+        
 
       </div>
     )
