@@ -3,8 +3,8 @@ import { Route, withRouter } from 'react-router-dom';
 import UpdateItemForm from './UpdateItemForm';
 import CreateItem from './CreateItem';
 import ItemList from './ItemList';
-import SingleWishList from './SingleWishlist'
-import { UpdateOneItem, showItemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
+import SingleWishlist from './SingleWishlist'
+import { UpdateOneItem, showItemsInWishlist, showOneItemFromWishlist, postNewItemInWishlist, destroyOneItem }
   from '../services/api-helper';
 
 
@@ -28,7 +28,7 @@ class ItemContainer extends Component {
   // =============== Read ===============
 
   getAllitems = async () => {
-    const items = await showItemsInWishList()
+    const items = await showItemsInWishlist()
     this.setState({ items })
   }
 
@@ -47,19 +47,19 @@ class ItemContainer extends Component {
 
   // =============== Delete ===============
 
-  destroyItems = async (wishListId, itemId) => {
-    await destroyOneItem(itemId);
-    this.setState(prevState => ({
-      items: prevState.wishlists.filter(items => {
-        return items.id !== itemId
-      })
-    }))
-    this.props.history.push(`/wishlists/${wishListId}/items/${itemId}`)
-  }
+  // destroyItem = async (wishListId, itemId) => {
+  //   await destroyOneItem(itemId);
+  //   this.setState(prevState => ({
+  //     items: prevState.wishlists.filter(items => {
+  //       return items.id !== itemId
+  //     })
+  //   }))
+  //   this.props.history.push(`/wishlists/${wishListId}/items/${itemId}`)
+  // }
 
   // =============== Update ===============
 
-  updateItems = async (wishListId, itemId, wishlistData) => {
+  updateItems = async (wishlistId, itemId, wishlistData) => {
     const updatedItems = await UpdateOneItem(itemId, this.state.itemsFormData);
     this.setState(prevState => ({
       items: prevState.items.map(item =>
@@ -67,7 +67,7 @@ class ItemContainer extends Component {
           ? updatedItems
           : item)
     }))
-    this.props.history.push(`/wishlists/${wishListId}/items/${itemId}`)
+    this.props.history.push(`/wishlists/${wishlistId}/items/${itemId}`)
   }
 
   // =============== Set State Helper ===============
@@ -89,8 +89,12 @@ class ItemContainer extends Component {
 
     return (
       <div>
-        <Route exact path='/wishlists/:wishlistId/items' render={() =>
-          (<ItemList itemList={this.state.itemsList} />)} />
+        {/* <Route exact path='/wishlists/:wishlistId/items' render={(props) =>
+          (<ItemList
+            itemList={this.state.itemList}
+            destroyItem={this.destroyItem}
+            currentWishListId={props.match.params.wishlistId}
+          />)} /> */}
         {/* <Route exact path='/wishlists/:wishlistId/items/:itemId' render={(props) => {
           const wishlistId = props.match.params.wishlistId;
           const itemId = props.match.params.itemId;
@@ -107,7 +111,7 @@ class ItemContainer extends Component {
         <Route path='/wishlists/:wishlistId/items/new' render={(props) => (
           <CreateItem
             createItem={this.createItem}
-            currentWishListId={props.match.params.wishlistId}
+            currentWishlistId={props.match.params.wishlistId}
 
           />
         )} />
@@ -115,10 +119,12 @@ class ItemContainer extends Component {
           <UpdateItemForm
             wishlistId={props.match.params.ItemsId}
             updateWishlist={this.updateItems}
-            handleWishListChange={this.handleItemsChange}
+            handleWishlistChange={this.handleItemsChange}
             items={this.state.itemsFormData}
           />
         )} />
+
+
 
       </div>
     )

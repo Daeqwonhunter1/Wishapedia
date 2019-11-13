@@ -34,7 +34,7 @@ itemRouter.route('/')
     }
   })
 
-itemRouter.route(':itemId')
+itemRouter.route('/:itemId')
   .get(async (req, res, next) => {
     try {
       const post = await Item.findByPk(req.params.itemId);

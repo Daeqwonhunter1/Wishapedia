@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import {
-  showWishLists, postWishList, destroyOneWishList, UpdateOneWishList
+  showWishlists, postWishlist, destroyOneWishlist, UpdateOneWishlist
 } from '../services/api-helper'
 import WishlistList from './WishlistList';
 import CreateWishlist from './CreateWishlist';
-import SingleWishList from './SingleWishlist';
+import SingleWishlist from './SingleWishlist';
 import UpdateWishlistForm from './UpdateWishlistForm';
 
 class WishlistContainer extends Component {
@@ -26,7 +26,7 @@ class WishlistContainer extends Component {
 
   // =============== HANDLE CHANGE ===============
 
-  handleWishListChange = (e) => {
+  handleWishlistChange = (e) => {
     const { name, value } = e.target;
     this.setState(prevState => ({
       wishlistFormData: {
@@ -39,7 +39,7 @@ class WishlistContainer extends Component {
   // =============== Read ===============
 
   getAllWishlists = async () => {
-    const wishlists = await showWishLists()
+    const wishlists = await showWishlists()
     this.setState({ wishlists })
   }
 
@@ -47,7 +47,7 @@ class WishlistContainer extends Component {
   // =============== Create ===============
 
   createWishlist = async () => {
-    const newWishlist = await postWishList(this.state.wishlistFormData);
+    const newWishlist = await postWishlist(this.state.wishlistFormData);
     this.setState(prevState => ({
       wishlists: [...prevState.wishlists, newWishlist]
     }))
@@ -57,7 +57,7 @@ class WishlistContainer extends Component {
   // =============== Delete ===============
 
   destroyWishlist = async (wishlistId) => {
-    await destroyOneWishList(wishlistId);
+    await destroyOneWishlist(wishlistId);
     this.setState(prevState => ({
       wishlists: prevState.wishlists.filter(wishlist => {
         return wishlist.id !== wishlistId
@@ -69,7 +69,7 @@ class WishlistContainer extends Component {
   // =============== Update ===============
 
   updateWishlist = async (wishlistId) => {
-    const updatedWishlist = await UpdateOneWishList(wishlistId, this.state.wishlistFormData);
+    const updatedWishlist = await UpdateOneWishlist(wishlistId, this.state.wishlistFormData);
     this.setState(prevState => ({
       wishlists: prevState.wishlists.map(wishlist =>
         wishlist.id === parseInt(wishlistId)
@@ -104,7 +104,7 @@ class WishlistContainer extends Component {
           const currentWishlist = this.state.wishlists.find(wishlist => {
             return wishlist.id === parseInt(wishlistId)
           })
-          return <SingleWishList
+          return <SingleWishlist
             setWishlistFormData={this.setWishlistFormData}
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
@@ -115,7 +115,7 @@ class WishlistContainer extends Component {
         <Route path='/wishlists/new' render={() => (
           <CreateWishlist
             createWishlist={this.createWishlist}
-            handleWishListChange={this.handleWishListChange}
+            handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
           />
         )} />
@@ -123,7 +123,7 @@ class WishlistContainer extends Component {
           <UpdateWishlistForm
             wishlistId={props.match.params.wishlistId}
             updateWishlist={this.updateWishlist}
-            handleWishListChange={this.handleWishListChange}
+            handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
           />
         )} />
