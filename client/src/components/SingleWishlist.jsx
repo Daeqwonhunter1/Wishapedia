@@ -12,11 +12,11 @@ class SingleWishlist extends Component {
   destroyItem = async (wishlistId, itemId) => {
     await destroyOneItem(wishlistId, itemId);
     this.setState(prevState => ({
-      items: prevState.currentItems.filter(items => {
-        return items.id !== parseInt(itemId)
-      })
+      currentItems: prevState.currentItems.filter(items => (
+        items.id !== parseInt(itemId)
+      ))
     }))
-    this.props.history.push(`/wishlists`)
+    this.props.history.push(`/wishlists/${wishlistId}`)
   }
 
   setCurrentWishlist = async () => {
