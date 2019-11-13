@@ -81,22 +81,23 @@ class WishlistContainer extends Component {
 
   // =============== Set State Helper ===============
 
-  setWishlistFormData = (wishlist) => {
-    this.setState({
-      wishlistFormData: {
-        name: wishlist.name,
-        description: wishlist.description,
-        type: wishlist.type
-      }
-    })
-    this.props.history.push(`/wishlists/${wishlist.id}/edit`)
-  }
+  // setWishlistFormData = (wishlist) => {
+  //   this.setState({
+  //     wishlistFormData: {
+  //       name: wishlist.name,
+  //       description: wishlist.description,
+  //       type: wishlist.type
+  //     }
+  //   })
+  //   this.props.history.push(`/wishlists/${wishlist.id}/edit`)
+  // }
 
   render() {
 
     return (
       <div>
         <Route exact path='/' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
+
         <Route exact path='/wishlists' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
 
         <Route exact path='/wishlists/:wishlistId' render={(props) => {
@@ -105,7 +106,7 @@ class WishlistContainer extends Component {
             return wishlist.id === parseInt(wishlistId)
           })
           return <SingleWishlist
-            setWishlistFormData={this.setWishlistFormData}
+            // setWishlistFormData={this.setWishlistFormData}
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}
@@ -115,16 +116,19 @@ class WishlistContainer extends Component {
         <Route path='/wishlists/new' render={() => (
           <CreateWishlist
             createWishlist={this.createWishlist}
+            handleWishListChange={this.handleWishListChange}
             handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
           />
         )} />
+
         <Route path='/wishlists/:wishlistId/edit' render={(props) => (
           <UpdateWishlistForm
             wishlistId={props.match.params.wishlistId}
             updateWishlist={this.updateWishlist}
             handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
+            wishlists={this.state.wishlists}
           />
         )} />
 
