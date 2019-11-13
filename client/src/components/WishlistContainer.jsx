@@ -113,9 +113,10 @@ class WishlistContainer extends Component {
             wishlistId={wishlistId}
           />
         }} />
-        <Route path='/wishlists/new' render={() => (
+      <Route path='/wishlists/new' render={() => (
           <CreateWishlist
             createWishlist={this.createWishlist}
+            handleWishListChange={this.handleWishListChange}
             handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
           />

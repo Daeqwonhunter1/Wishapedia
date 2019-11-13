@@ -20,7 +20,7 @@ class UpdateItemForm extends Component {
         price,
         comments,
         ...otherData
-      } = this.props.items.find(item => {
+      } = this.props.items.map(item => {
         return item.id === parseInt(this.props.itemId)
       })
       this.setState({
