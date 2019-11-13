@@ -81,31 +81,32 @@ class WishlistContainer extends Component {
 
   // =============== Set State Helper ===============
 
-  setWishlistFormData = (wishlist) => {
-    this.setState({
-      wishlistFormData: {
-        name: wishlist.name,
-        description: wishlist.description,
-        type: wishlist.type
-      }
-    })
-    this.props.history.push(`/wishlists/${wishlist.id}/edit`)
-  }
+  // setWishlistFormData = (wishlist) => {
+  //   this.setState({
+  //     wishlistFormData: {
+  //       name: wishlist.name,
+  //       description: wishlist.description,
+  //       type: wishlist.type
+  //     }
+  //   })
+  //   this.props.history.push(`/wishlists/${wishlist.id}/edit`)
+  // }
 
   render() {
 
     return (
       <div>
         <Route exact path='/' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
+        
         <Route exact path='/wishlists' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
-
+        
         <Route exact path='/wishlists/:wishlistId' render={(props) => {
           const wishlistId = props.match.params.wishlistId;
           const currentWishlist = this.state.wishlists.find(wishlist => {
             return wishlist.id === parseInt(wishlistId)
           })
           return <SingleWishlist
-            setWishlistFormData={this.setWishlistFormData}
+            // setWishlistFormData={this.setWishlistFormData}
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}
@@ -119,6 +120,7 @@ class WishlistContainer extends Component {
             wishlistFormData={this.state.wishlistFormData}
           />
         )} />
+
         <Route path='/wishlists/:wishlistId/edit' render={(props) => (
           <UpdateWishlistForm
             wishlistId={props.match.params.wishlistId}

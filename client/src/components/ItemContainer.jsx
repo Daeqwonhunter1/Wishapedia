@@ -59,31 +59,31 @@ class ItemContainer extends Component {
 
   // =============== Update ===============
 
-  updateItems = async (wishlistId, itemId, wishlistData) => {
-    const updatedItems = await UpdateOneItem(itemId, this.state.itemsFormData);
-    this.setState(prevState => ({
-      items: prevState.items.map(item =>
-        item.id === parseInt(itemId)
-          ? updatedItems
-          : item)
-    }))
-    this.props.history.push(`/wishlists/${wishlistId}/items/${itemId}`)
-  }
+  // updateItems = async (wishlistId, itemId, wishlistData) => {
+  //   const updatedItems = await UpdateOneItem(itemId, this.state.itemFormData);
+  //   this.setState(prevState => ({
+  //     items: prevState.items.map(item =>
+  //       item.id === parseInt(itemId)
+  //         ? updatedItems
+  //         : item)
+  //   }))
+  //   this.props.history.push(`/wishlists/${wishlistId}`)
+  // }
 
   // =============== Set State Helper ===============
 
-  setItemFormData = (wishlist, itemId, items) => {
-    this.setState({
-      itemsFormData: {
-        name: items.name,
-        image_url: items.image_url,
-        url: items.url,
-        price: items.price,
-        comments: items.comments
-      }
-    })
-    this.props.history.push(`/wishlists/${wishlist.id}/items/${itemId}/edit`)
-  }
+  // setItemFormData = (wishlist, itemId, items) => {
+  //   this.setState({
+  //     itemFormData: {
+  //       name: items.name,
+  //       image_url: items.image_url,
+  //       url: items.url,
+  //       price: items.price,
+  //       comments: items.comments
+  //     }
+  //   })
+  //   this.props.history.push(`/wishlists/${wishlist.id}/items`)
+  // }
 
   render() {
 
@@ -112,17 +112,24 @@ class ItemContainer extends Component {
           <CreateItem
             createItem={this.createItem}
             currentWishlistId={props.match.params.wishlistId}
-
           />
         )} />
+
         <Route path='/wishlists/:wishlistId/items/:itemId/edit' render={(props) => (
+          <UpdateItemForm
+            items={this.state.items}
+            updateItems={this.updateItems}
+            itemId={props.match.params.id}
+          />
+        )} />
+        {/* <Route path='/wishlists/:wishlistId/items/:itemId/edit' render={(props) => (
           <UpdateItemForm
             wishlistId={props.match.params.ItemsId}
             updateWishlist={this.updateItems}
             handleWishlistChange={this.handleItemsChange}
-            items={this.state.itemsFormData}
+            items={this.state.itemFormData}
           />
-        )} />
+        )} /> */}
 
 
 

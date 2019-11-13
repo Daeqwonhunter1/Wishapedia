@@ -27,16 +27,22 @@ export default function ItemList(props) {
 
       {items && items.map(item =>
         <div className="item" key={item.id}>
-          <p>name: {item.name}</p>
+          <h3>NAME: {item.name}</h3>
           <img src={item.image_url} alt={item.name}></img>
-          <p>url: {item.url}</p>
-          <p>price: {item.price}</p>
-          <p>comments: {item.comments}</p>
-          <p>{item.id}</p>
-          <p>{item.wishlistId}</p>
+          <p>LINK: {item.url}</p>
+          <p>PRICE: {item.price}</p>
+          <p>COMMENTS: {item.comments}</p>
+          {/* <p>{item.id}</p>
+          <p>{item.wishlistId}</p> */}
+
+
+          
           <button id={item.id}
-            onClick={() => { props.destroyItem(item.wishlistId, item.id ) }}>
+            onClick={() => { props.destroyItem(item.wishlistId, item.id) }}>
             DESTROY {item.name}</button>
+
+          <Link to={`/wishlists/:wishlistId/items/:itemId/edit`}><button>Edit Item</button></Link>
+
 
 
 
