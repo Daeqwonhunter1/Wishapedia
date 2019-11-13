@@ -1,24 +1,49 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { showItemsInWishList } from '../services/api-helper'
+import ItemList from './ItemList';
 
 export default class SingleWishlist extends Component {
   state = {
-    currentWishlist: null
+    currentWishlist: null,
+    currentItems: []
   }
 
-  setCurrentWishlist = () => {
+
+  setCurrentWishlist = async () => {
     console.log(this.props);
+
     const currentWishlist = this.props.currentWishlist
     this.setState({ currentWishlist })
+
+
+    const items = await showItemsInWishList(this.props.wishlistId);
+
+    const newItems = items.filter(item =>
+      item.wishlistId === parseInt(this.props.wishlistId))
+
+    this.setState({ items: newItems })
   }
 
-  componentDidMount() {
-    this.setCurrentWishlist();
+  setCurrentItemlist = async () => {
+
+    const allItems = await showItemsInWishList(this.props.wishlistId);
+
+    const currentItems = allItems.filter(item =>
+      item.wishlistId === parseInt(this.props.wishlistId))
+
+    this.setState({ currentItems })
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidMount() {
+    await this.setCurrentWishlist();
+    await this.setCurrentItemlist();
+  }
+
+  async componentDidUpdate(prevProps) {
     if (prevProps.wishlistId !== this.props.wishlistId) {
-      this.setCurrentWishlist();
+      await this.setCurrentWishlist();
+      await this.setCurrentItemlist();
     }
   }
 
@@ -50,6 +75,9 @@ export default class SingleWishlist extends Component {
             </Link>
           </>
         )}
+
+        <ItemList items={this.state.currentItems} />
+
       </div>
     )
   }

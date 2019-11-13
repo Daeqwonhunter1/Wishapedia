@@ -109,6 +109,7 @@ class WishlistContainer extends Component {
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}
+            wishlistId={wishlistId}
           />
         }} />
         <Route path='/wishlists/new' render={() => (
