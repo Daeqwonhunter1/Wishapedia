@@ -20,7 +20,7 @@ class UpdateItemForm extends Component {
         price,
         comments,
         ...otherData
-      } = this.props.items.map(item => {
+      } = this.props.items.find(item => {
         return item.id === parseInt(this.props.itemId)
       })
       this.setState({
@@ -43,8 +43,8 @@ class UpdateItemForm extends Component {
   }
 
 
-  updateItems = async (wishlistId, itemId, itemFormData) => {
-    const updatedItems = await UpdateOneItem(itemId, itemFormData);
+  updateItems = async (wishlistId, itemId, itemData) => {
+    const updatedItems = await UpdateOneItem(wishlistId, itemId, itemData);
     this.setState({
       name: "",
       image_url: "",
@@ -54,7 +54,7 @@ class UpdateItemForm extends Component {
     })
     this.props.items.map(item =>
       item.id === parseInt(itemId)
-        ? itemFormData
+        ? itemData
         : item)
 
     this.props.history.push(`/wishlists/${wishlistId}`)
@@ -76,7 +76,7 @@ class UpdateItemForm extends Component {
 
         <form onSubmit={(e) => {
           e.preventDefault();
-          this.UpdateItemForm(this.props.itemId, this.state);
+          this.updateItems(this.props.wishlistId, this.props.itemId, this.state);
         }}>
           <label htmlFor="name">Name</label>
           <input
@@ -96,7 +96,7 @@ class UpdateItemForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="url">description</label>
+          <label htmlFor="url">url</label>
           <input
             type="text"
             name="url"

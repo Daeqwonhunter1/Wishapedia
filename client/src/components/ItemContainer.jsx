@@ -117,11 +117,18 @@ class ItemContainer extends Component {
 
         <Route path='/wishlists/:wishlistId/items/:itemId/edit' render={(props) => (
           <UpdateItemForm
-            items={this.state.items}
+            itemId={props.match.params.itemId}
+            wishlistId={props.match.params.wishlistId}
             updateItems={this.updateItems}
-            itemId={props.match.params.id}
+            handleItemChange={this.handleItemChange}
+            ItemFormData={this.state.ItemFormData}
+            items={this.state.items}
           />
         )} />
+
+
+
+
         {/* <Route path='/wishlists/:wishlistId/items/:itemId/edit' render={(props) => (
           <UpdateItemForm
             wishlistId={props.match.params.ItemsId}

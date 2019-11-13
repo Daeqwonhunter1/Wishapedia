@@ -36,12 +36,12 @@ export default function ItemList(props) {
           <p>{item.wishlistId}</p> */}
 
 
-          
+
           <button id={item.id}
             onClick={() => { props.destroyItem(item.wishlistId, item.id) }}>
             DESTROY {item.name}</button>
 
-          <Link to={`/wishlists/:wishlistId/items/:itemId/edit`}><button>Edit Item</button></Link>
+          <Link to={`/wishlists/${item.wishlistId}/items/${item.id}/edit`}><button>Edit Item</button></Link>
 
 
 
