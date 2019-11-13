@@ -96,7 +96,8 @@ class WishlistContainer extends Component {
 
     return (
       <div>
-        <Route exact path='/' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
+        <Route exact path='/' render={() => (<WishlistList wishlists={this.state.wishlists}
+          getAllWishlists={this.getAllWishlists} />)} />
 
         <Route exact path='/wishlists' render={() => (<WishlistList wishlists={this.state.wishlists} />)} />
 
