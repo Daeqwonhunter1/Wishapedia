@@ -3,47 +3,47 @@ import { Link } from 'react-router-dom';
 
 export default class SingleItem extends Component {
   state = {
-    currentItemlist: null
+    currentItem: null
   }
 
-  setCurrentItemlist = () => {
+  setCurrentItem = () => {
     console.log(this.props);
-    const currentItemlist = this.props.currentItemlist
-    this.setState({ currentItemlist })
+    const currentItem = this.props.currentItem
+    this.setState({ currentItem })
   }
 
   componentDidMount() {
-    this.setCurrentItemlist();
+    this.setCurrentItem();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.wishlistId !== this.props.wishlistId) {
-      this.setCurrentItemlist();
+      this.setCurrentItem();
     }
   }
 
   render() {
-    const { currentItemlist } = this.state;
+    const { currentItem } = this.state;
     const { currentUser } = this.props;
 
     return (
       <div>
         <h2>SingleWishlist component</h2>
 
-        {currentItemlist && (
+        {currentItem && (
           <>
-            <h3>{currentItemlist.name}</h3>
-            <img src={currentItemlist.image} alt=""></img>
-            <p>{currentItemlist.url} </p>
-            <p>{currentItemlist.price}</p>
-            <p>{currentItemlist.comments}</p>
+            <h3>{currentItem.name}</h3>
+            <img src={currentItem.image} alt=""></img>
+            <p>{currentItem.url} </p>
+            <p>{currentItem.price}</p>
+            <p>{currentItem.comments}</p>
             {
-              currentUser && currentUser.id === currentItemlist.userId && (
+              currentUser && currentUser.id === currentItem.userId && (
                 <>
                   <button onClick={() => {
-                    this.props.destroyItem(currentItemlist.id)
+                    this.props.destroyItem(currentItem.id)
                   }}>Delete</button>
-                  <Link to={`/posts/${currentItemlist.id}/edit`}><button>Edit</button></Link>
+                  <Link to={`/posts/${currentItem.id}/edit`}><button>Edit</button></Link>
                 </>
               )
             }

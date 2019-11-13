@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import {
   showWishLists, postWishList, destroyOneWishList, UpdateOneWishList
@@ -109,6 +109,7 @@ class WishlistContainer extends Component {
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}
+            wishlistId={wishlistId}
           />
         }} />
         <Route path='/wishlists/new' render={() => (

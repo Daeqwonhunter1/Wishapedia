@@ -4,6 +4,7 @@ import CreateItem from './CreateItem';
 
 export default function WishlistList(props) {
   const { wishlists } = props
+  console.log(wishlists)
   return (
     <div>
 

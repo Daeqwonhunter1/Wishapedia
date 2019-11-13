@@ -13,10 +13,10 @@ export default function ItemList(props) {
         <div className="item" key={item.id}>
           {/* <Link to={`/items/${item.id}`}><h3>itemlist name: {item.name}</h3></Link> */}
           <p>name: {item.name}</p>
-          <p>image_url: {item.image_url}</p>
+          <img src={item.image_url} alt={item.name}></img>
           <p>url: {item.url}</p>
           <p>price: {item.price}</p>
-          <p>comments: {item.commensts}</p>
+          <p>comments: {item.comments}</p>
         </div>
       )}
 

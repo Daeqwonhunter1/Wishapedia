@@ -4,7 +4,7 @@ import UpdateItemForm from './UpdateItemForm';
 import CreateItem from './CreateItem';
 import ItemList from './ItemList';
 import SingleWishList from './SingleWishlist'
-import { UpdateOneItem, showItemsInWishList, showitemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
+import { UpdateOneItem, showItemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
   from '../services/api-helper';
 
 
@@ -16,14 +16,7 @@ class ItemContainer extends Component {
     super()
     this.state = {
       currentItemContainer: " ",
-      items: [],
-      itemFormData: {
-        name: " ",
-        image_url: " ",
-        url: " ",
-        price: 0,
-        comments: " "
-      }
+      items: []
     }
   }
 
@@ -44,13 +37,12 @@ class ItemContainer extends Component {
 
   createItem = async (id, newItem) => {
 
-    // this.setState({ itemFormData: { name, image_url, url, price, comments } })
     const newItems = await postNewItemInWishlist(id, newItem);
     this.setState(prevState => ({
       items: [...prevState.items, newItems]
     }))
-    console.log(newItems)
-    //  this.props.history.push(`/wishlists/${wishListId}/items`)
+
+    this.props.history.push(`/wishlists/${id}`)
   }
 
   // =============== Delete ===============
@@ -97,9 +89,9 @@ class ItemContainer extends Component {
 
     return (
       <div>
-        {/* <Route exact path='/wishlists/:wishlistId/items' render={() =>
+        <Route exact path='/wishlists/:wishlistId/items' render={() =>
           (<ItemList itemList={this.state.itemsList} />)} />
-        <Route exact path='/wishlists/:wishlistId/items/:itemId' render={(props) => {
+        {/* <Route exact path='/wishlists/:wishlistId/items/:itemId' render={(props) => {
           const wishlistId = props.match.params.wishlistId;
           const itemId = props.match.params.itemId;
           const currentWishlist = this.state.wishlists.find(wishlist => {
