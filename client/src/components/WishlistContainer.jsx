@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import {
   showWishLists, postWishList, destroyOneWishList, UpdateOneWishList

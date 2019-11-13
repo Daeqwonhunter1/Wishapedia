@@ -13,15 +13,18 @@ const {
 wishlistRouter.route('/')
   .get(async (req, res, next) => {
     try {
-      const posts = await Wishlist.findAll();
+      const posts = await Wishlist.findAll({ include: 'user' });
       res.json(posts);
     } catch (e) {
       next(e)
     }
   })
-  .post(async (req, res, next) => {
+  .post(restrict, async (req, res, next) => {
     try {
-      const post = await Wishlist.create(req.body);
+      const post = await Wishlist.create({
+        ...req.body,
+        userId: res.locals.user.id
+      });
       res.json(post);
     } catch (e) {
       next(e)

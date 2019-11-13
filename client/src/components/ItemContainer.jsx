@@ -4,7 +4,7 @@ import UpdateItemForm from './UpdateItemForm';
 import CreateItem from './CreateItem';
 import ItemList from './ItemList';
 import SingleWishList from './SingleWishlist'
-import { UpdateOneItem, showItemsInWishList, showitemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
+import { UpdateOneItem, showItemsInWishList, showOneItemFromWishList, postNewItemInWishlist, destroyOneItem }
   from '../services/api-helper';
 
 

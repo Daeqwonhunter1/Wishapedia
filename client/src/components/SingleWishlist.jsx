@@ -64,7 +64,7 @@ export default class SingleWishlist extends Component {
               currentUser && currentUser.id === currentWishlist.userId && (
                 <>
                   <button onClick={() => {
-                    this.props.destroyPost(currentWishlist.id)
+                    this.props.destroyWishlist(currentWishlist.id)
                   }}>Delete</button>
                   <Link to={`/posts/${currentWishlist.id}/edit`}><button>Edit</button></Link>
                 </>
