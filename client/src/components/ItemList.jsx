@@ -29,7 +29,8 @@ export default function ItemList(props) {
         <div className="item" key={item.id}>
           <h3>NAME: {item.name}</h3>
           <img src={item.image_url} alt={item.name}></img>
-          <p>LINK: {item.url}</p>
+          <br></br>
+          <a href={item.url}>Link to site</a>
           <p>PRICE: {item.price}</p>
           <p>COMMENTS: {item.comments}</p>
           {/* <p>{item.id}</p>
