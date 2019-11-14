@@ -16,17 +16,20 @@ const {
 itemRouter.route('/')
   .get(async (req, res, next) => {
     try {
-      const posts = await Item.findAll();
+      const posts = await Item.findAll({ include: 'user' });
       res.json(posts);
     } catch (e) {
       next(e)
     }
   })
-  .post(async (req, res, next) => {
+  .post(restrict, async (req, res, next) => {
     try {
       const wishlistId = req.params.wishlistId
       const wishlist = await Wishlist.findByPk(wishlistId)
-      const item = await Item.create(req.body);
+      const item = await Item.create({
+        ...req.body,
+        userId: res.locals.user.id
+      });
       await item.setWishlist(wishlist)
       res.json(item);
     } catch (e) {
