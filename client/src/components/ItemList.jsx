@@ -17,24 +17,22 @@ class ItemList extends Component {
       currentUser
     })
   }
- 
+
 
   render() {
     const { items } = this.props
     const { currentUser } = this.state
 
-    console.log(`${currentUser.id}: ${currentUser.username}`)
-
     return (
       <div>
         {items && items.map(item =>
           <div className="item" key={item.id}>
-           <h3>{item.name}</h3>
-          <img src={item.image_url} alt={item.name}></img>
-          <br></br>
-          <a href={item.url}>Link to site</a>
-          <p>PRICE: {item.price}</p>
-          <p>COMMENTS: {item.comments}</p>
+            <h3>{item.name}</h3>
+            <img src={item.image_url} alt={item.name}></img>
+            <br></br>
+            <a href={item.url}>Link to site</a>
+            <p>PRICE: {item.price}</p>
+            <p>COMMENTS: {item.comments}</p>
 
             {currentUser && currentUser.id === item.userId && (
               <>

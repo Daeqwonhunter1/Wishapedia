@@ -30,7 +30,7 @@ class WishlistList extends Component {
         </Link>
         <h2>All Wishlists</h2>
 
-        <div id = "wishlists">
+        <div id="wishlists">
           {wishlists && wishlists.map(wishlist =>
             <div className="wishlist" key={wishlist.id}>
               <Link to={`/wishlists/${wishlist.id}`}><h3>wishlist name: {wishlist.name}</h3></Link>
