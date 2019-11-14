@@ -17,7 +17,6 @@ class CreateItem extends Component {
 
   render() {
     const { name, image_url, url, price, comments } = this.state;
-    console.log(this.props)
     return (
       <div>
         <form onSubmit={(e) => {

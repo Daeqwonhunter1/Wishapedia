@@ -20,7 +20,6 @@ class SingleWishlist extends Component {
   }
 
   setCurrentWishlist = async () => {
-    console.log(this.props);
 
     const currentWishlist = await showOnewishlists(this.props.wishlistId);
 

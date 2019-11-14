@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function ItemList(props) {
-  console.log("itemlist", props)
   const { items } = props
 
   return (

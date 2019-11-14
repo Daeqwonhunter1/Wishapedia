@@ -46,7 +46,6 @@ class App extends React.Component {
     if (currentUser) {
       this.setState({ currentUser })
     }
-    console.log(`current user = ${this.state.currentUser}`)
   }
 
   handleLogout = () => {

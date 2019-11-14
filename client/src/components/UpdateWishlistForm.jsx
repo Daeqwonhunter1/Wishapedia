@@ -34,20 +34,13 @@ class UpdateWishlistForm extends Component {
     this.setState({ [name]: value })
   }
   updateWishlist = async (wishlistId, wishlistFormData) => {
-    console.log("update: ", wishlistId, wishlistFormData)
     const updatedWishlist = await UpdateOneWishlist(wishlistId, wishlistFormData);
-    console.log("update: ", updatedWishlist)
     this.setState({
       name: null,
       description: null,
       type: null
     })
-    this.props.wishlists.filter(wishlist => (
-      wishlist.id === wishlistId
-        ? wishlistFormData
-        : wishlist
-    ))
-    console.log(this.props.wishlists)
+    this.props.getAllWishlists()
     this.props.history.push(`/wishlists/${wishlistId}`)
   }
   componentDidUpdate(prevProps) {
