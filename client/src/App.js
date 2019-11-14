@@ -111,6 +111,7 @@ class App extends React.Component {
         <footer>
           <hr></hr>
           <small>2019 © Crazy Demons</small>
+          <a href="https://www.vecteezy.com/"> Vectors by Vecteezy</a>
         </footer>
 
       </div>

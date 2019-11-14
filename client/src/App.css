@@ -1,11 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Proza+Libre&display=swap');
+
+
+
+body{
+  font-family: 'Proza Libre', sans-serif;
+}
+
+header{
+  top: 0;
+  background: black;
+/* text-align: center; */
+display: flex;
+justify-content: space-between;
+height: 90px;
+font-family: 'Proza Libre', sans-serif;
+
+}
+
+header p{
+  color: white;
+  margin: 0;
+margin-top: 30px;  
+}
+
+header h2{
+  margin: 0;
+  line-height: 90px;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+header h2:active{
+  color: white;
+}
+
+
+header hr{
+  display: none;
+}
 .item{
   border: 1px solid black;
+  text-align: center;
+  width: 500px;
+  margin: 10px;
+  background: gray;
 }
 
 .item img{
   height: 200px;
   width: auto;
 }
+
 
 
 /* ///Register/// */
@@ -119,3 +164,63 @@ a {
 a:hover {
   color:green
 }
+
+#wishlist-list{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wishlist{
+  border: 1px dashed black;
+  height: 200px;
+  width: 200px;
+  margin: 10px auto;
+ 
+}
+
+#wishlist-list button{
+  margin-top: 20px;
+  width: 100px;
+  height: 30px;
+  background: black;
+  color: white;
+}
+
+h3, h3:active{
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+footer{
+  background: black;
+  color: white;
+  text-align: center;
+  
+}
+
+footer small{
+  font-size: 1em;
+  margin: 10px;
+}
+
+#single-wishlist{
+text-align: center;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+}
+
+/* input{
+
+} */
+
