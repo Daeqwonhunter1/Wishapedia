@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import {
-  UpdateOneWishlist
-} from '../services/api-helper';
 
 class UpdateWishlistForm extends Component {
   state = {
@@ -33,8 +30,7 @@ class UpdateWishlistForm extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value })
   }
-  updateWishlist = async (wishlistId, wishlistFormData) => {
-    const updatedWishlist = await UpdateOneWishlist(wishlistId, wishlistFormData);
+  updateWishlist = async (wishlistId) => {
     this.setState({
       name: null,
       description: null,

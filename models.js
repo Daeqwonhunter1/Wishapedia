@@ -45,6 +45,9 @@ User.init({
 
 User.hasMany(Wishlist, { onDelete: 'cascade' });
 Wishlist.belongsTo(User);
+
+User.hasMany(Item, { onDelete: 'cascade' });
+Item.belongsTo(User);
 Wishlist.hasMany(Item, { onDelete: 'cascade' });
 Item.belongsTo(Wishlist);
 

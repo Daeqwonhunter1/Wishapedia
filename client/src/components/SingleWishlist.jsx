@@ -78,18 +78,19 @@ class SingleWishlist extends Component {
                   <Link to={`/wishlists/${currentWishlist.id}/edit`}>
                     <button>Edit Wishlist</button>
                   </Link>
+                  <Link to={`/wishlists/${currentWishlist.id}/items/new`}>
+                    <button>Add Item</button>
+                  </Link>
                 </>
               )
             }
-            <Link to={`/wishlists/${currentWishlist.id}/items/new`}>
-              <button>Add Item</button>
-            </Link>
           </>
         )}
 
         <ItemList
           items={this.state.currentItems}
           destroyItem={this.destroyItem}
+          currentUser={this.props.currentUser}
         />
 
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import {
-  showWishlists, postWishlist, destroyOneWishlist, UpdateOneWishlist
+  showWishlists, destroyOneWishlist, postWishlist
 } from '../services/api-helper'
 import WishlistList from './WishlistList';
 import CreateWishlist from './CreateWishlist';
@@ -47,7 +47,7 @@ class WishlistContainer extends Component {
   // =============== Create ===============
 
   createWishlist = async () => {
-    const newWishlist = await postWishlist(this.state.wishlistFormData);
+    await postWishlist(this.state.wishlistFormData);
     this.getAllWishlists()
     this.props.history.push("/wishlists")
   }
@@ -66,8 +66,7 @@ class WishlistContainer extends Component {
 
   // =============== Update ===============
 
-  updateWishlist = async (wishlistId) => {
-    const updatedWishlist = await UpdateOneWishlist(wishlistId, this.state.wishlistFormData);
+  updateWishlist = async () => {
     this.getAllWishlists()
     this.props.history.push("/wishlists")
   }
