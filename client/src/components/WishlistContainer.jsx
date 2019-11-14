@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import {
-  showWishlists, postWishlist, destroyOneWishlist, UpdateOneWishlist
+  showWishlists, destroyOneWishlist, postWishlist
 } from '../services/api-helper'
 import WishlistList from './WishlistList';
 import CreateWishlist from './CreateWishlist';
@@ -47,10 +47,8 @@ class WishlistContainer extends Component {
   // =============== Create ===============
 
   createWishlist = async () => {
-    const newWishlist = await postWishlist(this.state.wishlistFormData);
-    this.setState(prevState => ({
-      wishlists: [...prevState.wishlists, newWishlist]
-    }))
+    await postWishlist(this.state.wishlistFormData);
+    this.getAllWishlists()
     this.props.history.push("/wishlists")
   }
 
@@ -68,14 +66,8 @@ class WishlistContainer extends Component {
 
   // =============== Update ===============
 
-  updateWishlist = async (wishlistId) => {
-    const updatedWishlist = await UpdateOneWishlist(wishlistId, this.state.wishlistFormData);
-    this.setState(prevState => ({
-      wishlists: prevState.wishlists.map(wishlist =>
-        wishlist.id === parseInt(wishlistId)
-          ? updatedWishlist
-          : wishlist)
-    }))
+  updateWishlist = async () => {
+    this.getAllWishlists()
     this.props.history.push("/wishlists")
   }
 
@@ -116,6 +108,7 @@ class WishlistContainer extends Component {
             handleWishlistChange={this.handleWishlistChange}
             wishlistFormData={this.state.wishlistFormData}
             wishlists={this.state.wishlists}
+            getAllWishlists={this.getAllWishlists}
           />
         )} />
       </div>

@@ -32,6 +32,7 @@ const seed = async () => {
 
 
   await xmas.addItem(planner);
+  await admin.addItem(planner);
   process.exit();
 }
 
