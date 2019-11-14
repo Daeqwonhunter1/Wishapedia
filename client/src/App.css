@@ -215,7 +215,7 @@ main {
 /* Register End */
 
 /* Login */
-.login-div {
+.login-div, #create-wishlist-div, #create-item-div {
   background-color: #BFF6F9;
   height: 100%;
   width: 100%;
@@ -224,7 +224,7 @@ main {
 }
 
 
-.login-div-form {
+.login-div-form, .create-form  {
   background-color: white;
   height: 500px;
   width: 50%;
@@ -429,6 +429,7 @@ img {
 }
 
 
+
 #modal {
   display: none;
   position: fixed;
@@ -510,5 +511,34 @@ img {
   20% {
     transform: rotate(160deg);
   }
+
+.create-header{
+  color: blue;
+  text-decoration: underline;
+}
+
+.input-fields {
+  height: 20px;
+  padding: 10px;
+  border: 1px solid purple;
+  border-radius: 5px;
+  color: black;
+  width: 500px;
+  height: 20px;
+}
+
+.create-button  {
+  color: black;
+  background-color: rgb(3, 172, 73);
+  padding: 10px;
+  margin: 10px;
+  width: 370px;
+  height: 50px;
+  display: block;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  font-size: 20px;
+  border: 2px solid black;
+
 
 }
