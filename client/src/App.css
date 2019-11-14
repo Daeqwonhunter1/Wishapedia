@@ -69,22 +69,24 @@ header hr{
   height: 500px;
   width:50%;
   position: relative;
-  left:350px;
+  left:355px;
   border:3px solid black
 
  
 }
 
-#username {
-  display: block;
-  margin:10px;
+#register-username {
+  height: 20px;
   padding:10px;
   border:1px solid purple;
   border-radius: 5px;
   color:black;
   width:500px;
+  height: 20px;
   position: relative;
-  left:100px;
+  top:-30px;
+  left:0px
+  
 
 }
 
@@ -92,16 +94,18 @@ header hr{
 }
 
 
-#password {
+#register-password {
   display: block;
-  margin:10px;
   padding:10px;
   border:1px solid purple;
   border-radius: 5px;
   color:black;
   width:500px;
+  height: 20px;
   position: relative;
-  left:100px
+  top:-60px;
+  left:0px
+  
 }
 
 #password:focus {
@@ -111,21 +115,24 @@ header hr{
 #register {
   color:blue;
   padding: 10px;
+  text-decoration: underline;
 }
 
-#submit-button {
+#register-submit-button {
   color:black;
   background-color: rgb(3, 172, 73);
   padding:10px;
   margin:10px;
-  width:300px;
+  width:370px;
+  height: 50px;
   display:block;
   position: relative;
-  left:210px;
+  left:0px;
+  top:-100px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
   font-size: 20px;
-  border-radius: 5px solid black;
+  border: 2px solid black;
   
 }
 
@@ -133,7 +140,9 @@ header hr{
   
 }
 
+/* Register End */
 
+/* Login */
 .login-div {
   background-color: gray;
   height: 100%;
@@ -153,17 +162,80 @@ header hr{
 }
 
 #login {
-  text-align: center;
-}
-
-a {
-  color:black;
+  color:blue;
   text-decoration: underline;
+  position: relative;
+  left:250px
 }
 
-a:hover {
+#login-username {
+  height: 20px;
+  padding:10px;
+  border:1px solid purple;
+  border-radius: 5px;
+  color:black;
+  width:500px;
+  height: 20px;
+  position: relative;
+  top:100px;
+  left:-10px
+  
+
+}
+
+#login-password {
+  display: block;
+  padding:10px;
+  border:1px solid purple;
+  border-radius: 5px;
+  color:black;
+  width:500px;
+  height: 20px;
+  position: relative;
+  top:0px;
+  left:22px
+  
+}
+
+#register-link {
+  text-decoration: underline;
+  color:black;
+  position: relative;
+  top:-90px;
+  left:-180px;
+  width:200px;
+  height:100px
+}
+
+#register-link:hover {
   color:green
 }
+
+#login-submit-button {
+  color:black;
+  background-color: rgb(3, 172, 73);
+  padding:10px;
+  margin:10px;
+  width:370px;
+  height: 50px;
+  display:block;
+  position: relative;
+  left:110px;
+  top:-50px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  font-size: 20px;
+  border: 2px solid black;
+  
+}
+
+
+#login-submit-button:hover {
+  color:red
+}
+/* Login End */
+
+
 
 #wishlist-list{
   text-align: center;
