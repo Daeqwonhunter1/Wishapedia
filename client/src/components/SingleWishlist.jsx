@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom';
 import ItemList from './ItemList';
-import { UpdateOneItem, showItemsInWishlist, showOneItemFromWishlist, postNewItemInWishlist, destroyOneItem }
+import { showItemsInWishlist, destroyOneItem, showOnewishlists }
   from '../services/api-helper';
 
 class SingleWishlist extends Component {
@@ -22,7 +22,9 @@ class SingleWishlist extends Component {
   setCurrentWishlist = async () => {
     console.log(this.props);
 
-    const currentWishlist = this.props.currentWishlist
+    //const currentWishlist = this.props.currentWishlist
+    const currentWishlist = await showOnewishlists(this.props.wishlistId);
+
     this.setState({ currentWishlist })
 
 
