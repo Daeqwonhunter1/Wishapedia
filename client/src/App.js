@@ -18,6 +18,7 @@ class App extends React.Component {
     authErrorMessage: "",
     currentItem: null,
     items: [],
+    hasError: false,
     itemFormData: {
       name: null,
       image_url: null,
@@ -41,10 +42,19 @@ class App extends React.Component {
     }
   }
 
+  logErrorToMyService = async () => {
+    await this.setState({
+      hasError: true
+    })
+  }
+
+
   handleLogin = async (loginData) => {
     const currentUser = await loginUser(loginData);
-    if (currentUser.error) {
-      this.setState({ authErrorMessage: currentUser.error })
+
+    if (this.state.hasError) {
+      this.logErrorToMyService();
+      // this.setState({ authErrorMessage: currentUser.error })
       console.log("i don't work")
     } else {
       this.setState({ currentUser });
@@ -87,6 +97,9 @@ class App extends React.Component {
   // =============== Render ===============
 
   render() {
+    
+    const errorMessage = this.state.hasError
+      ? <p>  Error</p> : null
     return (
       <div className="app" >
         <header>
