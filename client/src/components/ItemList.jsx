@@ -41,7 +41,7 @@ class ItemList extends Component {
                   DESTROY {item.name}</button>
                 <Link to={`/wishlists/${item.wishlistId}/items/${item.id}/edit`}><button>Edit Item</button></Link>
               </>
-            )}
+             )} 
 
           </div>
         )}
