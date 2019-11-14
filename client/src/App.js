@@ -101,12 +101,10 @@ class App extends React.Component {
       <div className="app" >
         <header>
           {/* <Link to='/'><img src={logo} /></Link> */}
-          <div id="header-logo">
             <Link to="/"><h2>Wishapedia</h2></Link>
-          </div>
           {
             this.state.currentUser ?
-              <div>
+              <div id="user-info">
 
                 <p id = "user">{`Hello, ${this.state.currentUser.username}`}</p>
                 <Link to = '/register'><button id = "logout-button" onClick={this.handleLogout}>Logout</button></Link>

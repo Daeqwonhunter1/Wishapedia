@@ -72,8 +72,8 @@ class SingleWishlist extends Component {
         {currentWishlist && (
           <>
             <h3>{currentWishlist.name}</h3>
-            <p>{currentWishlist.type} </p>
-            <p>{currentWishlist.description}</p>
+            <h4>{currentWishlist.type} </h4>
+            <h4>{currentWishlist.description}</h4>
 
             {
               currentUser && currentUser.id === currentWishlist.userId && (
