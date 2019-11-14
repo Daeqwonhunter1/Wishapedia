@@ -4,8 +4,6 @@ import {
   UpdateOneWishlist
 } from '../services/api-helper';
 
-
-
 class UpdateWishlistForm extends Component {
   state = {
     name: "",
@@ -17,8 +15,7 @@ class UpdateWishlistForm extends Component {
       const {
         name,
         description,
-        type,
-        ...otherData
+        type
       } = this.props.wishlists.find(wishlist => {
         return wishlist.id === parseInt(this.props.wishlistId)
       })
@@ -51,7 +48,7 @@ class UpdateWishlistForm extends Component {
         : wishlist
     ))
     console.log(this.props.wishlists)
-    this.props.history.push("/")
+    this.props.history.push(`/wishlists/${wishlistId}`)
   }
   componentDidUpdate(prevProps) {
     if (prevProps.wishlists !== this.props.wishlists) {

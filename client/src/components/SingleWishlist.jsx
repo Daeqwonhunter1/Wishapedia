@@ -22,11 +22,9 @@ class SingleWishlist extends Component {
   setCurrentWishlist = async () => {
     console.log(this.props);
 
-    //const currentWishlist = this.props.currentWishlist
     const currentWishlist = await showOnewishlists(this.props.wishlistId);
 
     this.setState({ currentWishlist })
-
 
     const items = await showItemsInWishlist(this.props.wishlistId);
 
@@ -64,7 +62,6 @@ class SingleWishlist extends Component {
 
     return (
       <div id="single-wishlist">
-        {/* <h2>SingleWishlist component</h2> */}
 
         {currentWishlist && (
           <>
@@ -94,8 +91,6 @@ class SingleWishlist extends Component {
           items={this.state.currentItems}
           destroyItem={this.destroyItem}
         />
-
-
 
       </div>
     )

@@ -20,8 +20,6 @@ class CreateItem extends Component {
     console.log(this.props)
     return (
       <div>
-        <h2>CreateItem component</h2>
-
         <form onSubmit={(e) => {
           e.preventDefault();
           this.props.createItem(this.props.currentWishlistId, this.state);
