@@ -8,7 +8,7 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import WishlistContainer from './components/WishlistContainer';
 import ItemContainer from './components/ItemContainer';
-
+import logo from './images/Wishapedia.png'
 
 
 
@@ -79,6 +79,7 @@ class App extends React.Component {
     return (
       <div className="app" >
         <header>
+          <img src={logo} />
           <Link to="/"><h2>Wishapedia</h2></Link>
           {
             this.state.currentUser ?
