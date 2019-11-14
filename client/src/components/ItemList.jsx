@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {
@@ -16,15 +17,7 @@ class ItemList extends Component {
       currentUser
     })
   }
-  // const getUser = async () => {
-  //  
-  // }
-
-  // if (!currentUser) {
-  //   getUser()
-  // }
-
-  // console.log(`${currentUser.id}: ${currentUser.username}`)
+ 
 
   render() {
     const { items } = this.props
@@ -36,12 +29,12 @@ class ItemList extends Component {
       <div>
         {items && items.map(item =>
           <div className="item" key={item.id}>
-            <h3>NAME: {item.name}</h3>
-            <img src={item.image_url} alt={item.name}></img>
-            <br></br>
-            <a href={item.url}>Link to site</a>
-            <p>PRICE: {item.price}</p>
-            <p>COMMENTS: {item.comments}</p>
+           <h3>{item.name}</h3>
+          <img src={item.image_url} alt={item.name}></img>
+          <br></br>
+          <a href={item.url}>Link to site</a>
+          <p>PRICE: {item.price}</p>
+          <p>COMMENTS: {item.comments}</p>
 
             {currentUser && currentUser.id === item.userId && (
               <>

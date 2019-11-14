@@ -78,16 +78,18 @@ class App extends React.Component {
     return (
       <div className="app" >
         <header>
-          <img src={logo} />
-          <Link to="/"><h2>Wishapedia</h2></Link>
+          {/* <Link to='/'><img src={logo} /></Link> */}
+          <div id = "header-logo">
+            <Link to="/"><h2>Wishapedia</h2></Link>
+            </div>
           {
             this.state.currentUser ?
               <div>
-                <p>{`Hello, ${this.state.currentUser.username}`}</p>
-                <button onClick={this.handleLogout}>Logout</button>
+                <p id = "user">{`Hello, ${this.state.currentUser.username}`}</p>
+                <button id = "logout-button" onClick={this.handleLogout}>Logout</button>
               </div>
               :
-              <Link to='/login'><button>Login/register</button></Link>
+              <Link to='/login'><button id = "login-logout-button">Login/register</button></Link>
           }
           <hr></hr>
 
