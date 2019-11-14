@@ -12,7 +12,6 @@ export default class LoginForm extends Component {
     this.setState({ [name]: value })
   }
 
-
   render() {
     return (
       <div className = "login-div">
@@ -25,8 +24,7 @@ export default class LoginForm extends Component {
           })
         }}>
           <h2 id="login">Login</h2>
-         
-          {/* <label htmlFor="username">username</label> */}
+
           <input
             name="username"
             id="login-username"
@@ -35,7 +33,6 @@ export default class LoginForm extends Component {
             value={this.state.username}
             onChange={this.handleChange}></input>
 
-          {/* <label htmlFor="password">password</label> */}
           <input
             name="password"
             id="login-password"

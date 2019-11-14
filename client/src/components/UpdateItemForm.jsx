@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { UpdateOneItem } from '../services/api-helper'
 
 class UpdateItemForm extends Component {
   state = {
@@ -18,8 +17,7 @@ class UpdateItemForm extends Component {
         image_url,
         url,
         price,
-        comments,
-        ...otherData
+        comments
       } = this.props.items.find(item => {
         return item.id === parseInt(this.props.itemId)
       })
@@ -42,9 +40,7 @@ class UpdateItemForm extends Component {
     this.setState({ [name]: value })
   }
 
-
   updateItems = async (wishlistId, itemId, itemData) => {
-    const updatedItems = await UpdateOneItem(wishlistId, itemId, itemData);
     this.setState({
       name: "",
       image_url: "",
@@ -60,7 +56,6 @@ class UpdateItemForm extends Component {
     this.props.history.push(`/wishlists/${wishlistId}`)
   }
 
-
   componentDidUpdate(prevProps) {
     if (prevProps.items !== this.props.items) {
       this.setFormData();
@@ -73,7 +68,6 @@ class UpdateItemForm extends Component {
     return (
 
       <div>
-
         <form onSubmit={(e) => {
           e.preventDefault();
           this.updateItems(this.props.wishlistId, this.props.itemId, this.state);

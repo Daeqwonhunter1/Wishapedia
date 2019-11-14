@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export default class RegisterForm extends Component {
   state = {
     username: "",
@@ -11,7 +10,6 @@ export default class RegisterForm extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value })
   }
-
 
   render() {
     return (
@@ -25,8 +23,7 @@ export default class RegisterForm extends Component {
           })
         }}>
           <h2 id="register">Create an account</h2>
-         
-          {/* <label id ="username-label" htmlFor="username">username</label> */}
+
           <input className = "user-input"
             name="username"
             id="register-username"
@@ -34,8 +31,6 @@ export default class RegisterForm extends Component {
             placeholder="username"
             value={this.state.username}
             onChange={this.handleChange}></input>
-
-          {/* <label htmlFor="password">password</label> */}
 
           <input
             name="password"

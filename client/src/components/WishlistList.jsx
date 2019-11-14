@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom';
-import CreateItem from './CreateItem';
+import { showWishlists } from '../services/api-helper';
 
 class WishlistList extends Component {
   state = {
@@ -8,7 +8,10 @@ class WishlistList extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllWishlists();
+    const wishlists = showWishlists();
+    this.setState = {
+      wishlists
+    }
   }
 
   render() {
@@ -17,7 +20,6 @@ class WishlistList extends Component {
     this.setState = {
       wishlists
     }
-    console.log("x: ", this.state.wishlists)
 
     return (
       <div id="wishlist-list">

@@ -79,19 +79,6 @@ class WishlistContainer extends Component {
     this.props.history.push("/wishlists")
   }
 
-  // =============== Set State Helper ===============
-
-  // setWishlistFormData = (wishlist) => {
-  //   this.setState({
-  //     wishlistFormData: {
-  //       name: wishlist.name,
-  //       description: wishlist.description,
-  //       type: wishlist.type
-  //     }
-  //   })
-  //   this.props.history.push(`/wishlists/${wishlist.id}/edit`)
-  // }
-
   render() {
 
     return (
@@ -107,7 +94,6 @@ class WishlistContainer extends Component {
             return wishlist.id === parseInt(wishlistId)
           })
           return <SingleWishlist
-            // setWishlistFormData={this.setWishlistFormData}
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}
@@ -132,7 +118,6 @@ class WishlistContainer extends Component {
             wishlists={this.state.wishlists}
           />
         )} />
-
       </div>
     )
   }
