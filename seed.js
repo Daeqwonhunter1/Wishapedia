@@ -1,6 +1,14 @@
-const { Wishlist, Item } = require('./models');
+const { Wishlist, Item, User } = require('./models');
 
 const seed = async () => {
+
+  await User.destroy({ where: {} })
+  const admin = await User.create({
+    username: "admin",
+    password_digest: "$2b$11$QHbk2uVG8nywE4Cyd3FIxupsuiN50DVejt.O6Ew71DCS8oZcRaCQG"
+  })
+
+
   await Wishlist.destroy({ where: {} })
 
   const xmas = await Wishlist.create({
@@ -9,6 +17,7 @@ const seed = async () => {
     type: "christmas"
   })
 
+  await admin.addWishlist(xmas);
 
 
   await Item.destroy({ where: {} })
