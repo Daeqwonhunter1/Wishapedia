@@ -15,6 +15,7 @@ import logo from './images/Wishapedia.png'
 class App extends React.Component {
   state = {
     currentUser: null,
+    authErrorMessage: "",
     currentItem: null,
     items: [],
     itemFormData: {
@@ -29,16 +30,26 @@ class App extends React.Component {
 
   // =============== AUTH ===============
 
-  handleLogin = async (loginData) => {
-    const currentUser = await loginUser(loginData);
-    this.setState({ currentUser })
-    this.props.history.push("/")
+  handleRegister = async (registerData) => {
+    const currentUser = await registerUser(registerData)
+    if (currentUser.error) {
+      this.setState({ authErrorMessage: currentUser.error })
+      console.log("i don't work")
+    } else {
+      this.setState({ currentUser })
+      this.props.history.push("/")
+    }
   }
 
-  handleRegister = async (registerData) => {
-    const currentUser = await registerUser(registerData);
-    this.setState({ currentUser })
-    this.props.history.push("/")
+  handleLogin = async (loginData) => {
+    const currentUser = await loginUser(loginData);
+    if (currentUser.error) {
+      this.setState({ authErrorMessage: currentUser.error })
+      console.log("i don't work")
+    } else {
+      this.setState({ currentUser });
+      this.props.history.push("/")
+    }
   }
 
   handleVerify = async () => {
@@ -98,11 +109,15 @@ class App extends React.Component {
           <Route path='/login' render={() => (
             <LoginForm
               handleLogin={this.handleLogin}
+              authErrorMessage={this.state.authErrorMessage}
+
             />
           )} />
           <Route path='/register' render={() => (
             <RegisterForm
               handleRegister={this.handleRegister}
+              authErrorMessage={this.state.authErrorMessage}
+
             />
           )} />
 
