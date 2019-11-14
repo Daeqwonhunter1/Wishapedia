@@ -53,6 +53,10 @@ class WishlistContainer extends Component {
   }
 
   // =============== Delete ===============
+  DoYouWantTodestroyWishlist = async () => {
+    document.getElementById("modal").style.display = "block";
+    
+  }
 
   destroyWishlist = async (wishlistId) => {
     await destroyOneWishlist(wishlistId);
@@ -63,6 +67,8 @@ class WishlistContainer extends Component {
     }))
     this.props.history.push("/wishlists")
   }
+
+  
 
   // =============== Update ===============
 
@@ -86,6 +92,7 @@ class WishlistContainer extends Component {
             return wishlist.id === parseInt(wishlistId)
           })
           return <SingleWishlist
+            DoYouWantTodestroyWishlist = {this.DoYouWantTodestroyWishlist}
             destroyWishlist={this.destroyWishlist}
             currentWishlist={currentWishlist}
             currentUser={this.props.currentUser}

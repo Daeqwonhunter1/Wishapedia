@@ -55,6 +55,12 @@ class SingleWishlist extends Component {
     }
   }
 
+  async cancelModal() {
+    document.getElementById("modal").style.display = "none";
+ 
+
+  }
+
   render() {
     const { currentWishlist } = this.state;
     const { currentUser } = this.props;
@@ -72,9 +78,21 @@ class SingleWishlist extends Component {
               currentUser && currentUser.id === currentWishlist.userId && (
                 <>
                   <button onClick={() => {
-                    this.props.destroyWishlist(currentWishlist.id)
+                    this.props.DoYouWantTodestroyWishlist(currentWishlist.id)
                   }}>Delete Wishlist</button>
+                  <div id='modal'>
+                    <div id='modal-content'>
+                      <h1>Are You Sure?</h1>
+                    <span onClick = {this.cancelModal} id="close">&times;</span>
+                    <button onClick={() => {
+                      this.props.destroyWishlist(currentWishlist.id)
+                    }}>Yes</button>
 
+                   
+                     <button onClick = {this.cancelModal}>No</button>
+                    
+                    </div>
+                    </div>
                   <Link to={`/wishlists/${currentWishlist.id}/edit`}>
                     <button>Edit Wishlist</button>
                   </Link>

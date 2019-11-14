@@ -13,7 +13,8 @@ class Wishlist extends Sequelize.Model { }
 Wishlist.init({
   name: Sequelize.STRING,
   description: Sequelize.TEXT,
-  type: Sequelize.TEXT
+  type: Sequelize.TEXT,
+  
 }, {
   sequelize,
   modelName: 'wishlist'

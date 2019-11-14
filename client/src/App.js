@@ -86,7 +86,7 @@ class App extends React.Component {
             this.state.currentUser ?
               <div>
                 <p id = "user">{`Hello, ${this.state.currentUser.username}`}</p>
-                <button id = "logout-button" onClick={this.handleLogout}>Logout</button>
+                <Link to = '/register'><button id = "logout-button" onClick={this.handleLogout}>Logout</button></Link>
               </div>
               :
               <Link to='/login'><button id = "login-logout-button">Login/register</button></Link>
