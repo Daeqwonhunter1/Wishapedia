@@ -9,7 +9,7 @@ export default function ItemList(props) {
     <div>
       {items && items.map(item =>
         <div className="item" key={item.id}>
-          <h3>NAME: {item.name}</h3>
+          <h3>{item.name}</h3>
           <img src={item.image_url} alt={item.name}></img>
           <br></br>
           <a href={item.url}>Link to site</a>

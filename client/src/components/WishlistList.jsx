@@ -24,11 +24,13 @@ class WishlistList extends Component {
     return (
       <div id="wishlist-list">
         <Link to="/wishlists/new">
-          <button>Add Wishlist</button>
+          <div class="plus radius">
+          </div>
+
         </Link>
         <h2>All Wishlists</h2>
 
-        <>
+        <div id = "wishlists">
           {wishlists && wishlists.map(wishlist =>
             <div className="wishlist" key={wishlist.id}>
               <Link to={`/wishlists/${wishlist.id}`}><h3>wishlist name: {wishlist.name}</h3></Link>
@@ -38,7 +40,7 @@ class WishlistList extends Component {
 
             </div>
           )}
-        </>
+        </div>
       </div>
     )
   }

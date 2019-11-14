@@ -1,44 +1,119 @@
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre&display=swap');
 
 
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #BFF6F9;
+}
 
-body{
+body {
   font-family: 'Proza Libre', sans-serif;
 }
 
-header{
+header {
   top: 0;
   background: black;
-/* text-align: center; */
-display: flex;
-justify-content: space-between;
-height: 90px;
-font-family: 'Proza Libre', sans-serif;
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  font-family: 'Proza Libre', sans-serif;
 
 }
 
-header p{
-  color: white;
+header p {
+  color: #3DA9F7;
   margin: 0;
-margin-top: 30px;  
+  margin-top: 30px;
 }
 
-header h2{
+header p:hover {
+  color: #BFF6F9
+}
+
+header h2 {
   margin: 0;
   line-height: 90px;
-  color: white;
+  color: #BFF6F9;
   text-decoration: underline;
-  text-decoration-color: red;
+  text-decoration-color: white;
+  position: relative;
+  left: 30px;
+  top: -15px;
+  height:50px
 }
-header h2:active{
+
+header h2:active {
   color: white;
 }
 
+header h2:hover {
+  color: #BFF6F9
+}
 
-header hr{
+#header-logo {
+
+  border: 2px solid #3DA9F7;
+  width: 200px;
+  height: 50px;
+  position: relative;
+  top: 25px;
+  left: 43%;
+
+}
+
+header hr {
   display: none;
 }
-.item{
+
+#logout-button {
+  padding: 10px;
+  background-color: inherit;
+  color: white;
+  border-radius: 20px;
+  border: 2px solid white;
+  position: relative;
+  top: -10px;
+  font-family: 'Proza Libre', sans-serif;
+}
+
+#logout-button:hover {
+  color: #3DA9F7;
+  border: 2px solid #BFF6F9
+}
+
+#login-logout-button {
+  padding: 10px;
+  background-color: inherit;
+  color: white;
+  border-radius: 20px;
+  border: 2px solid white;
+  position: relative;
+  top: 40px;
+  font-family: 'Proza Libre', sans-serif;
+  font-size: 15px
+}
+
+
+#login-logout-button:hover {
+  color: #3DA9F7;
+  border: 2px solid #BFF6F9
+}
+
+#user {
+  position: relative;
+  left: -80px;
+  top: 20px;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+
+}
+
+.item {
   border: 1px solid black;
   text-align: center;
   width: 500px;
@@ -46,11 +121,18 @@ header hr{
   background: gray;
 }
 
-.item img{
+.item img {
   height: 200px;
   width: auto;
 }
 
+#wishlist-button {
+
+
+  border: 2px solid black;
+  font-family: 'Proza Libre', sans-serif;
+  font-size: 15px
+}
 
 
 /* ///Register/// */
@@ -58,8 +140,8 @@ header hr{
 .register-div {
   background-color: gray;
   height: 100%;
-  width:100%;
-  padding:10px;
+  width: 100%;
+  padding: 10px;
   text-align: center;
 }
 
@@ -67,87 +149,77 @@ header hr{
 .register-div-form {
   background-color: white;
   height: 500px;
-  width:50%;
+  width: 50%;
   position: relative;
-  left:355px;
-  border:3px solid black
-
- 
+  left: 355px;
+  border: 3px solid black
 }
 
 #register-username {
   height: 20px;
-  padding:10px;
-  border:1px solid purple;
+  padding: 10px;
+  border: 1px solid purple;
   border-radius: 5px;
-  color:black;
-  width:500px;
+  color: black;
+  width: 500px;
   height: 20px;
   position: relative;
-  top:-30px;
-  left:0px
-  
-
+  top: -30px;
+  left: 0px
 }
 
-#username:focus {
-}
+#username:focus {}
 
 
 #register-password {
   display: block;
-  padding:10px;
-  border:1px solid purple;
+  padding: 10px;
+  border: 1px solid purple;
   border-radius: 5px;
-  color:black;
-  width:500px;
+  color: black;
+  width: 500px;
   height: 20px;
   position: relative;
-  top:-60px;
-  left:0px
-  
+  top: -60px;
+  left: 0px
 }
 
-#password:focus {
- 
-}
+#password:focus {}
 
 #register {
-  color:blue;
+  color: blue;
   padding: 10px;
   text-decoration: underline;
 }
 
 #register-submit-button {
-  color:black;
+  color: black;
   background-color: rgb(3, 172, 73);
-  padding:10px;
-  margin:10px;
-  width:370px;
+  padding: 10px;
+  margin: 10px;
+  width: 370px;
   height: 50px;
-  display:block;
+  display: block;
   position: relative;
-  left:0px;
-  top:-100px;
+  left: 0px;
+  top: -100px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
   font-size: 20px;
   border: 2px solid black;
-  
+
 }
 
-#submit-button:hover {
-  
-}
+#submit-button:hover {}
 
 /* Register End */
 
 /* Login */
 .login-div {
-  background-color: gray;
+  background-color: #BFF6F9;
   height: 100%;
-  width:100%;
-  padding:10px;
+  width: 100%;
+  padding: 10px;
   text-align: center;
 }
 
@@ -155,136 +227,148 @@ header hr{
 .login-div-form {
   background-color: white;
   height: 500px;
-  width:50%;
+  width: 50%;
   position: relative;
-  left:350px;
-  border:3px solid black
+  left: 350px;
+  border: 3px solid black
 }
 
 #login {
-  color:blue;
+  color: blue;
   text-decoration: underline;
   position: relative;
-  left:250px
+  left: 250px
 }
 
 #login-username {
   height: 20px;
-  padding:10px;
-  border:1px solid purple;
+  padding: 10px;
+  border: 1px solid purple;
   border-radius: 5px;
-  color:black;
-  width:500px;
+  color: black;
+  width: 500px;
   height: 20px;
   position: relative;
-  top:100px;
-  left:-10px
-  
-
+  top: 100px;
+  left: -10px
 }
 
 #login-password {
   display: block;
-  padding:10px;
-  border:1px solid purple;
+  padding: 10px;
+  border: 1px solid purple;
   border-radius: 5px;
-  color:black;
-  width:500px;
+  color: black;
+  width: 500px;
   height: 20px;
   position: relative;
-  top:0px;
-  left:22px
-  
+  top: 0px;
+  left: 22px
 }
 
 #register-link {
   text-decoration: underline;
-  color:black;
+  color: black;
   position: relative;
-  top:-90px;
-  left:-180px;
-  width:200px;
-  height:50px
+  top: -90px;
+  left: -180px;
+  width: 200px;
+  height: 50px
 }
 
 #register-link:hover {
-  color:green
+  color: green
 }
 
 #login-submit-button {
-  color:black;
+  color: black;
   background-color: rgb(3, 172, 73);
-  padding:10px;
-  margin:10px;
-  width:370px;
+  padding: 10px;
+  margin: 10px;
+  width: 370px;
   height: 50px;
-  display:block;
+  display: block;
   position: relative;
-  left:110px;
-  top:-50px;
+  left: 110px;
+  top: -50px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
   font-size: 20px;
   border: 2px solid black;
-  
+
 }
 
 
 #login-submit-button:hover {
-  color:red
+  color: red
 }
+
 /* Login End */
 
 
 
-#wishlist-list{
+#wishlist-list {
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-}
-.wishlist{
-  border: 1px dashed black;
-  height: 200px;
-  width: 200px;
-  margin: 10px auto;
  
 }
 
-#wishlist-list button{
+.wishlist {
+  border: 1px solid black;
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  margin: 10px auto;
+}
+
+#wishlists {
+  
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+
+}
+
+#wishlist-list button {
   margin-top: 20px;
   width: 100px;
   height: 30px;
-  background: black;
-  color: white;
+  background-color: inherit;
+  color: black;
+  border: 2px solid black;
 }
 
-h3, h3:active{
+h3,
+h3:active {
   color: black;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 
-footer{
+footer {
   background: black;
   color: white;
   text-align: center;
-  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
 }
 
-footer small{
+footer small {
   font-size: 1em;
   margin: 10px;
 }
 
-#single-wishlist{
-text-align: center;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+#single-wishlist {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-form{
+form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -292,12 +376,54 @@ form{
 
 }
 
-/* input{
-
-} */
-
-
 img {
-  width:90px;
-  height:90px
+  width: 90px;
+  height: 90px
+}
+
+.plus {
+  position: relative;
+  top: 10px;
+  left: 0px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background:
+    linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)),
+    linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)),
+    rgb(0, 100, 172);
+  background-position: center;
+  background-size: 50% 2px, 2px 50%;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+
+}
+
+.radius {
+  border-radius: 50%;
+}
+
+@keyframes rotation {
+  78% {
+    transform: rotate(30deg);
+  }
+  68% {
+    transform: rotate(40deg);
+  }
+  58% {
+    transform: rotate(70deg);
+  }
+  50% {
+    transform: rotate(100deg);
+  }
+  48% {
+    transform: rotate(120deg);
+  }
+ 
+  
+
+}
+
+.plus:hover {
+  animation: rotation infinite 1s;
 }
