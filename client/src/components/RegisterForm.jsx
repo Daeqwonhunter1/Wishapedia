@@ -15,8 +15,8 @@ export default class RegisterForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={(e) => {
+      <div className = "register-div">
+        <form className = "register-div-form" onSubmit={(e) => {
           e.preventDefault()
           this.props.handleRegister(this.state)
           this.setState({
@@ -24,9 +24,10 @@ export default class RegisterForm extends Component {
             password: ""
           })
         }}>
-          <h2>Register</h2>
-          <label htmlFor="username">username</label>
-          <input
+          <h2 id="register">Create an account</h2>
+          <hr/>
+          {/* <label id ="username-label" htmlFor="username">username</label> */}
+          <input className = "user-input"
             name="username"
             id="username"
             type="text"
@@ -34,7 +35,8 @@ export default class RegisterForm extends Component {
             value={this.state.username}
             onChange={this.handleChange}></input>
 
-          <label htmlFor="password">password</label>
+          {/* <label htmlFor="password">password</label> */}
+
           <input
             name="password"
             id="password"
@@ -43,7 +45,7 @@ export default class RegisterForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}></input>
 
-          <button>Submit</button>
+          <button id = "submit-button">Submit</button>
           <br />
           <p>{this.props.authErrorMessage}</p>
         </form>

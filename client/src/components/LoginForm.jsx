@@ -15,8 +15,8 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={(e) => {
+      <div className = "login-div">
+        <form className = "login-div-form" onSubmit={(e) => {
           e.preventDefault();
           this.props.handleLogin(this.state)
           this.setState({
@@ -24,8 +24,9 @@ export default class LoginForm extends Component {
             password: ""
           })
         }}>
-          <h2>Login</h2>
-          <label htmlFor="username">username</label>
+          <h2 id="login">Login</h2>
+          <hr/>
+          {/* <label htmlFor="username">username</label> */}
           <input
             name="username"
             id="username"
@@ -34,7 +35,7 @@ export default class LoginForm extends Component {
             value={this.state.username}
             onChange={this.handleChange}></input>
 
-          <label htmlFor="password">password</label>
+          {/* <label htmlFor="password">password</label> */}
           <input
             name="password"
             id="password"
@@ -43,7 +44,7 @@ export default class LoginForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}></input>
 
-          <button>Submit</button>
+          <button id = "submit-button">Submit</button>
           <Link to="/register">Not registered? Register here.</Link>
           <br />
           <p>{this.props.authErrorMessage}</p>

@@ -51,6 +51,120 @@ header hr{
   width: auto;
 }
 
+
+
+/* ///Register/// */
+
+.register-div {
+  background-color: gray;
+  height: 100%;
+  width:100%;
+  padding:10px;
+  text-align: center;
+}
+
+
+.register-div-form {
+  background-color: white;
+  height: 500px;
+  width:50%;
+  position: relative;
+  left:350px;
+  border:3px solid black
+
+ 
+}
+
+#username {
+  display: block;
+  margin:10px;
+  padding:10px;
+  border:1px solid purple;
+  border-radius: 5px;
+  color:black;
+  width:500px;
+  position: relative;
+  left:100px;
+
+}
+
+#username:focus {
+}
+
+
+#password {
+  display: block;
+  margin:10px;
+  padding:10px;
+  border:1px solid purple;
+  border-radius: 5px;
+  color:black;
+  width:500px;
+  position: relative;
+  left:100px
+}
+
+#password:focus {
+ 
+}
+
+#register {
+  color:blue;
+  padding: 10px;
+}
+
+#submit-button {
+  color:black;
+  background-color: rgb(3, 172, 73);
+  padding:10px;
+  margin:10px;
+  width:300px;
+  display:block;
+  position: relative;
+  left:210px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  font-size: 20px;
+  border-radius: 5px solid black;
+  
+}
+
+#submit-button:hover {
+  
+}
+
+
+.login-div {
+  background-color: gray;
+  height: 100%;
+  width:100%;
+  padding:10px;
+  text-align: center;
+}
+
+
+.login-div-form {
+  background-color: white;
+  height: 500px;
+  width:50%;
+  position: relative;
+  left:350px;
+  border:3px solid black
+}
+
+#login {
+  text-align: center;
+}
+
+a {
+  color:black;
+  text-decoration: underline;
+}
+
+a:hover {
+  color:green
+}
+
 #wishlist-list{
   text-align: center;
   display: flex;
@@ -109,3 +223,4 @@ form{
 /* input{
 
 } */
+
