@@ -24,11 +24,10 @@ export default class LoginForm extends Component {
           })
         }}>
           <h2 id="login">Login</h2>
-          <hr/>
 
           <input
             name="username"
-            id="username"
+            id="login-username"
             type="text"
             placeholder="username"
             value={this.state.username}
@@ -36,14 +35,14 @@ export default class LoginForm extends Component {
 
           <input
             name="password"
-            id="password"
+            id="login-password"
             type="password"
             placeholder="password"
             value={this.state.password}
             onChange={this.handleChange}></input>
 
-          <button id = "submit-button">Submit</button>
-          <Link to="/register">Not registered? Register here.</Link>
+          <button id = "login-submit-button">Submit</button>
+          <Link id = "register-link" to="/register">Not registered? Register here.</Link>
           <br />
           <p>{this.props.authErrorMessage}</p>
         </form>

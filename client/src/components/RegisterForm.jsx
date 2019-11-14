@@ -23,10 +23,10 @@ export default class RegisterForm extends Component {
           })
         }}>
           <h2 id="register">Create an account</h2>
-          <hr/>
+
           <input className = "user-input"
             name="username"
-            id="username"
+            id="register-username"
             type="text"
             placeholder="username"
             value={this.state.username}
@@ -34,13 +34,13 @@ export default class RegisterForm extends Component {
 
           <input
             name="password"
-            id="password"
+            id="register-password"
             type="password"
             placeholder="password"
             value={this.state.password}
             onChange={this.handleChange}></input>
 
-          <button id = "submit-button">Submit</button>
+          <button id = "register-submit-button">Submit</button>
           <br />
           <p>{this.props.authErrorMessage}</p>
         </form>
