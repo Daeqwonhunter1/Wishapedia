@@ -47,14 +47,16 @@ class UpdateWishlistForm extends Component {
   render() {
     const { name, description, type } = this.state;
     return (
-      <div>
-        <h2>UpdateWishlistForm</h2>
-        <form onSubmit={(e) => {
+      <div id="update-wishlist-div">
+        <form className="create-form" onSubmit={(e) => {
           e.preventDefault();
           this.updateWishlist(this.props.wishlistId, this.state);
         }}>
-          <label htmlFor="name">name</label>
+          <h2 className="update-header">Update Wishlist</h2>
+
+          {/* <label htmlFor="name">name</label> */}
           <input
+            className="input-fields"
             type="text"
             name="name"
             id="name"
@@ -62,8 +64,9 @@ class UpdateWishlistForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="description">description</label>
+          {/* <label htmlFor="description">description</label> */}
           <input
+            className="input-fields"
             type="text"
             name="description"
             id="description"
@@ -71,8 +74,9 @@ class UpdateWishlistForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="type">type</label>
+          {/* <label htmlFor="type">type</label> */}
           <input
+            className="input-fields"
             type="text"
             name="type"
             id="type"
@@ -80,7 +84,7 @@ class UpdateWishlistForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <button>Submit</button>
+          <button className="update-button">Submit</button>
         </form>
       </div>
     )

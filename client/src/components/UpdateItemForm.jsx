@@ -67,13 +67,16 @@ class UpdateItemForm extends Component {
 
     return (
 
-      <div>
-        <form onSubmit={(e) => {
+      <div id="update-item-div">
+        <form className="update-form" onSubmit={(e) => {
           e.preventDefault();
           this.updateItems(this.props.wishlistId, this.props.itemId, this.state);
         }}>
-          <label htmlFor="name">Name</label>
+          <h2 className="update-header">Update Item</h2>
+
+          {/* <label htmlFor="name">Name</label> */}
           <input
+            className="input-fields"
             type="text"
             name="name"
             id="name"
@@ -81,8 +84,9 @@ class UpdateItemForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="image_url">image url</label>
+          {/* <label htmlFor="image_url">image url</label> */}
           <input
+            className="input-fields"
             type="text"
             name="image_url"
             id="image_url"
@@ -90,8 +94,9 @@ class UpdateItemForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="url">url</label>
+          {/* <label htmlFor="url">url</label> */}
           <input
+            className="input-fields"
             type="text"
             name="url"
             id="url"
@@ -99,8 +104,9 @@ class UpdateItemForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="price">price</label>
+          {/* <label htmlFor="price">price</label> */}
           <input
+            className="input-fields"
             type="text"
             name="price"
             id="price"
@@ -108,15 +114,16 @@ class UpdateItemForm extends Component {
             onChange={this.handleChange}
           />
           <br />
-          <label htmlFor="comments">comments</label>
+          {/* <label htmlFor="comments">comments</label> */}
           <input
+            className="input-fields"
             type="text"
             name="comments"
             id="comments"
             value={comments}
             onChange={this.handleChange}
           />
-          <button>Submit</button>
+          <button className="create-button">Submit</button>
         </form>
       </div>
 
