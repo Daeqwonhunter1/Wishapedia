@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import ItemList from './ItemList';
 import { UpdateOneItem, showItemsInWishlist, showOneItemFromWishlist, postNewItemInWishlist, destroyOneItem }
   from '../services/api-helper';
 
-export default class SingleWishlist extends Component {
+class SingleWishlist extends Component {
   state = {
     currentWishlist: null,
     currentItems: []
@@ -12,11 +12,11 @@ export default class SingleWishlist extends Component {
   destroyItem = async (wishlistId, itemId) => {
     await destroyOneItem(wishlistId, itemId);
     this.setState(prevState => ({
-      items: prevState.currentItems.filter(items => {
-        return items.id !== parseInt(itemId)
-      })
+      currentItems: prevState.currentItems.filter(items => (
+        items.id !== parseInt(itemId)
+      ))
     }))
-    // this.props.history.push(`/wishlists/`)
+    this.props.history.push(`/wishlists/${wishlistId}`)
   }
 
   setCurrentWishlist = async () => {
@@ -61,8 +61,8 @@ export default class SingleWishlist extends Component {
     const { currentUser } = this.props;
 
     return (
-      <div>
-        <h2>SingleWishlist component</h2>
+      <div id="single-wishlist">
+        {/* <h2>SingleWishlist component</h2> */}
 
         {currentWishlist && (
           <>
@@ -74,8 +74,11 @@ export default class SingleWishlist extends Component {
                 <>
                   <button onClick={() => {
                     this.props.destroyWishlist(currentWishlist.id)
-                  }}>Delete</button>
-                  <Link to={`/posts/${currentWishlist.id}/edit`}><button>Edit</button></Link>
+                  }}>Delete Wishlist</button>
+
+                  <Link to={`/wishlists/${currentWishlist.id}/edit`}>
+                    <button>Edit Wishlist</button>
+                  </Link>
                 </>
               )
             }
@@ -85,14 +88,15 @@ export default class SingleWishlist extends Component {
           </>
         )}
 
-          <ItemList
-            items={this.state.currentItems}
-            destroyItem={this.destroyItem}
-          />
+        <ItemList
+          items={this.state.currentItems}
+          destroyItem={this.destroyItem}
+        />
 
-        
+
 
       </div>
     )
   }
 }
+export default withRouter(SingleWishlist)
