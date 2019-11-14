@@ -10,8 +10,6 @@ import WishlistContainer from './components/WishlistContainer';
 import ItemContainer from './components/ItemContainer';
 import logo from './images/Wishapedia.png'
 
-
-
 class App extends React.Component {
   state = {
     currentUser: null,
@@ -67,7 +65,6 @@ class App extends React.Component {
     if (currentUser) {
       this.setState({ currentUser })
     }
-    console.log(`current user = ${this.state.currentUser}`)
   }
 
   handleLogout = () => {
@@ -103,16 +100,20 @@ class App extends React.Component {
     return (
       <div className="app" >
         <header>
-          <img src={logo} />
-          <Link to="/"><h2>Wishapedia</h2></Link>
+          {/* <Link to='/'><img src={logo} /></Link> */}
+          <div id="header-logo">
+            <Link to="/"><h2>Wishapedia</h2></Link>
+          </div>
           {
             this.state.currentUser ?
               <div>
-                <p>{`Hello, ${this.state.currentUser.username}`}</p>
-                <button onClick={this.handleLogout}>Logout</button>
+
+                <p id = "user">{`Hello, ${this.state.currentUser.username}`}</p>
+                <Link to = '/register'><button id = "logout-button" onClick={this.handleLogout}>Logout</button></Link>
+
               </div>
               :
-              <Link to='/login'><button>Login/register</button></Link>
+              <Link to='/login'><button id="login-logout-button">Login/register</button></Link>
           }
           <hr></hr>
 

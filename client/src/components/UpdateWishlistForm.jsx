@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import {
-  UpdateOneWishlist
-} from '../services/api-helper';
 
 class UpdateWishlistForm extends Component {
   state = {
@@ -33,21 +30,13 @@ class UpdateWishlistForm extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value })
   }
-  updateWishlist = async (wishlistId, wishlistFormData) => {
-    console.log("update: ", wishlistId, wishlistFormData)
-    const updatedWishlist = await UpdateOneWishlist(wishlistId, wishlistFormData);
-    console.log("update: ", updatedWishlist)
+  updateWishlist = async (wishlistId) => {
     this.setState({
       name: null,
       description: null,
       type: null
     })
-    this.props.wishlists.filter(wishlist => (
-      wishlist.id === wishlistId
-        ? wishlistFormData
-        : wishlist
-    ))
-    console.log(this.props.wishlists)
+    this.props.getAllWishlists()
     this.props.history.push(`/wishlists/${wishlistId}`)
   }
   componentDidUpdate(prevProps) {

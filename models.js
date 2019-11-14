@@ -1,25 +1,37 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize({
-  database: 'wishapedia_db',
-  dialect: 'postgres',
-  define: {
-    underscored: true
-  }
-});
+let sequelize;
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    define: {
+      underscored: true
+    }
+  });
+} else {
+  sequelize = new Sequelize({
+    database: 'wishapedia_db',
+    dialect: 'postgres',
+    define: {
+      underscored: true,
+    },
+  });
+}
 
-class Wishlist extends Sequelize.Model { }
+
+class Wishlist extends Sequelize.Model {}
 
 Wishlist.init({
   name: Sequelize.STRING,
   description: Sequelize.TEXT,
-  type: Sequelize.TEXT
+  type: Sequelize.TEXT,
+
 }, {
   sequelize,
   modelName: 'wishlist'
 });
 
-class Item extends Sequelize.Model { }
+class Item extends Sequelize.Model {}
 
 Item.init({
   name: Sequelize.STRING,
@@ -33,7 +45,7 @@ Item.init({
 });
 
 
-class User extends Sequelize.Model { }
+class User extends Sequelize.Model {}
 
 User.init({
   username: Sequelize.STRING,
@@ -43,9 +55,18 @@ User.init({
   modelName: 'user'
 })
 
-User.hasMany(Wishlist, { onDelete: 'cascade' });
+User.hasMany(Wishlist, {
+  onDelete: 'cascade'
+});
 Wishlist.belongsTo(User);
-Wishlist.hasMany(Item, { onDelete: 'cascade' });
+
+User.hasMany(Item, {
+  onDelete: 'cascade'
+});
+Item.belongsTo(User);
+Wishlist.hasMany(Item, {
+  onDelete: 'cascade'
+});
 Item.belongsTo(Wishlist);
 
 
