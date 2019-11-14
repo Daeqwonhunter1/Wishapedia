@@ -14,7 +14,8 @@ const seed = async () => {
   const xmas = await Wishlist.create({
     name: "xmas",
     description: "xmas",
-    type: "christmas"
+    type: "christmas",
+    
   })
 
   await admin.addWishlist(xmas);

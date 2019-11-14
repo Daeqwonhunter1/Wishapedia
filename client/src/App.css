@@ -429,6 +429,89 @@ img {
 }
 
 
+
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+#modal-content button {
+  width:100px;
+  height:40px
+}
+
+#modal-content button:focus,
+#modal-content button:hover {
+  color:black;
+  background-color: rgba(0,0,0,0.4);
+}
+#close {
+  color: white;
+  position: absolute;
+  top:0px;
+  left:10px;
+  font-size: 50px;
+  font-weight: bold;
+  animation: x infinite 2s
+}
+
+@keyframes x {
+  89% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(60deg);
+    color: #BFF6F9;
+
+  }
+ 
+}
+
+#close:hover,
+#close:focus {
+  color: #BFF6F9;
+  text-decoration: none;
+  cursor: pointer;
+  animation: Xrotation infinite 2s;
+}
+
+
+@keyframes Xrotation {
+  78% {
+    transform: rotate(30deg);
+  }
+  68% {
+    transform: rotate(40deg);
+  }
+  58% {
+    transform: rotate(70deg);
+  }
+  50% {
+    transform: rotate(100deg);
+  }
+  48% {
+    transform: rotate(120deg);
+  }
+ 
+  20% {
+    transform: rotate(160deg);
+  }
+
 .create-header{
   color: blue;
   text-decoration: underline;
@@ -456,5 +539,6 @@ img {
   letter-spacing: 2px;
   font-size: 20px;
   border: 2px solid black;
+
 
 }
