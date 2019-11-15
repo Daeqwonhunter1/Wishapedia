@@ -24,7 +24,7 @@ class ItemList extends Component {
     const { currentUser } = this.state
 
     return (
-      <div>
+      <div id="item-list">
         {items && items.map(item =>
           <div className="item" key={item.id}>
             <h3>{item.name}</h3>

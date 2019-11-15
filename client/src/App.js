@@ -13,8 +13,10 @@ import logo from './images/Wishapedia.png'
 class App extends React.Component {
   state = {
     currentUser: null,
+    authErrorMessage: "",
     currentItem: null,
     items: [],
+    hasError: false,
     itemFormData: {
       name: null,
       image_url: null,
@@ -27,16 +29,35 @@ class App extends React.Component {
 
   // =============== AUTH ===============
 
-  handleLogin = async (loginData) => {
-    const currentUser = await loginUser(loginData);
-    this.setState({ currentUser })
-    this.props.history.push("/")
+  handleRegister = async (registerData) => {
+    const currentUser = await registerUser(registerData)
+    if (currentUser.error) {
+      this.setState({ authErrorMessage: currentUser.error })
+      console.log("i don't work")
+    } else {
+      this.setState({ currentUser })
+      this.props.history.push("/")
+    }
   }
 
-  handleRegister = async (registerData) => {
-    const currentUser = await registerUser(registerData);
-    this.setState({ currentUser })
-    this.props.history.push("/")
+  logErrorToMyService = async () => {
+    await this.setState({
+      hasError: true
+    })
+  }
+
+
+  handleLogin = async (loginData) => {
+    const currentUser = await loginUser(loginData);
+
+    if (this.state.hasError) {
+      this.logErrorToMyService();
+      // this.setState({ authErrorMessage: currentUser.error })
+      console.log("i don't work")
+    } else {
+      this.setState({ currentUser });
+      this.props.history.push("/")
+    }
   }
 
   handleVerify = async () => {
@@ -73,16 +94,17 @@ class App extends React.Component {
   // =============== Render ===============
 
   render() {
+    
+    const errorMessage = this.state.hasError
+      ? <p>  Error</p> : null
     return (
       <div className="app" >
         <header>
           {/* <Link to='/'><img src={logo} /></Link> */}
-          <div id="header-logo">
             <Link to="/"><h2>Wishapedia</h2></Link>
-          </div>
           {
             this.state.currentUser ?
-              <div>
+              <div id="user-info">
 
                 <p id = "user">{`Hello, ${this.state.currentUser.username}`}</p>
                 <Link to = '/register'><button id = "logout-button" onClick={this.handleLogout}>Logout</button></Link>
@@ -99,11 +121,15 @@ class App extends React.Component {
           <Route path='/login' render={() => (
             <LoginForm
               handleLogin={this.handleLogin}
+              authErrorMessage={this.state.authErrorMessage}
+
             />
           )} />
           <Route path='/register' render={() => (
             <RegisterForm
               handleRegister={this.handleRegister}
+              authErrorMessage={this.state.authErrorMessage}
+
             />
           )} />
 
