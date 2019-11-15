@@ -26,7 +26,7 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 
 ## Entity Relationship Diagram
 
-![Wishapedia ERD](https://res.cloudinary.com/du4z2ezqn/image/upload/v1573774762/wishapedia-ERD-v2_isaewu.png)
+![Wishapedia ERD Diagram](https://res.cloudinary.com/du4z2ezqn/image/upload/v1573774762/wishapedia-ERD-v2_isaewu.png)
 
 ## API Endpoint Documentation
 
