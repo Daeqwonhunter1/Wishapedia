@@ -36,6 +36,8 @@ class ItemList extends Component {
 
             {currentUser && currentUser.id === item.userId && (
               <>
+                
+                
                 <button id={item.id}
                   onClick={() => { this.props.destroyItem(item.wishlistId, item.id) }}>
                   DESTROY {item.name}</button>
