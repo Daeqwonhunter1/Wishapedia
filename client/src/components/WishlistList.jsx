@@ -9,11 +9,14 @@ class WishlistList extends Component {
 
   componentDidMount() {
     const wishlists = showWishlists();
+    console.log(wishlists)
     this.setState = {
       wishlists
     }
   }
-
+  descriptionModal = () => {
+    document.getElementsByClassName("description-modal").style.display = "block"
+  }
   render() {
 
     const { wishlists } = this.props
@@ -32,13 +35,17 @@ class WishlistList extends Component {
         <div id="wishlists">
           {wishlists && wishlists.map(wishlist =>
             <div className="wishlist" key={wishlist.id}>
-              <Link to={`/wishlists/${wishlist.id}`}><h3>{wishlist.name}</h3></Link>
-              <p>description: {wishlist.description}</p>
-              <p>occasion: {wishlist.type}</p>
-              <p>created by: {wishlist.user.username}</p>
-
+              <Link to={`/wishlists/${wishlist.id}`}><h1>{wishlist.name}</h1></Link>
+              <p className="for">For: {wishlist.type}</p>
+              <p className="created-by">created by: {wishlist.user.username}</p>
+              <div  className="description-modal">
+                <div className="description-content">
+                  <p className="description">{wishlist.description}</p>
+                </div>
+              </div>
             </div>
           )}
+
         </div>
       </div>
     )

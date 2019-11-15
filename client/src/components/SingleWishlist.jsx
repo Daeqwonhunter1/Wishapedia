@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ItemList from './ItemList';
 import { showItemsInWishlist, destroyOneItem, showOnewishlists }
   from '../services/api-helper';
+import UpdateItemForm from './UpdateItemForm'
 
 class SingleWishlist extends Component {
   state = {
