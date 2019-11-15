@@ -215,9 +215,9 @@ main {
 /* Register End */
 
 /* Login */
-.login-div,
-#create-wishlist-div,
-#create-item-div {
+
+.login-div, #create-wishlist-div, #create-item-div,#update-wishlist-div, #update-item-div {
+
   background-color: #BFF6F9;
   height: 100%;
   width: 100%;
@@ -226,8 +226,9 @@ main {
 }
 
 
-.login-div-form,
-.create-form {
+
+.login-div-form,.create-form, .update-form{
+
   background-color: white;
   height: 500px;
   width: 50%;
@@ -598,9 +599,13 @@ img {
   }
 }
 
-.create-header {
+
+.create-header, .update-header{
+
+
   color: blue;
   text-decoration: underline;
+  width: 400px;
 }
 
 .input-fields {
@@ -613,7 +618,9 @@ img {
   height: 20px;
 }
 
-.create-button {
+
+.create-button, .update-button  {
+
   color: black;
   background-color: rgb(3, 172, 73);
   padding: 10px;

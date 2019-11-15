@@ -6,7 +6,7 @@ export default function CreateWishlist(props) {
         e.preventDefault();
         props.createWishlist();
       }}>
-        <h2 className="create-header">Create New Wishlist</h2>
+        <h2 className="create-header">Create Wishlist</h2>
 
         <input
           className="input-fields"
