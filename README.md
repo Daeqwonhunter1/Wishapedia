@@ -26,18 +26,19 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 
 ## Entity Relationship Diagram
 
-![Wishapedia ERD](https://res.cloudinary.com/du4z2ezqn/image/upload/v1573179390/Wishapedia-ERD_wrrcsm.png)
+![Wishapedia ERD](https://res.cloudinary.com/du4z2ezqn/image/upload/v1573774762/wishapedia-ERD-v2_isaewu.png)
 
 ## API Endpoint Documentation
 
 |Endpoint|Purpose|
 |---|---|
-|/users|for User - Read Index and Create|
-|/users/:userId|for User - Read Show, Update, and Delete|
-|/users/:userId/wishlists|for Wishlist- Read Index and Create |
-|/users/:userId/wishlists/:wishlistId|for Wishlist - Read Show, Update, and Delete |
-|/users/:userId/wishlists/:wishlistId/items|for Item - Read Index and Create |
-|/users/:userId/wishlists/:wishlistId/items/:itemId|for Item - Read Show, Update, and Delete |
+|/auth/register|for User registration|
+|/auth/login|for User login|
+|/auth/verify|for User verify|
+|/wishlists|for Wishlist- Read Index and Create |
+|/wishlists/:wishlistId|for Wishlist - Read Show, Update, and Delete |
+|/wishlists/:wishlistId/items|for Item - Read Index and Create |
+|/wishlists/:wishlistId/items/:itemId|for Item - Read Show, Update, and Delete |
 
 ## Wireframes
 
@@ -52,20 +53,18 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 
 ```
 <App>
-  <Header>
   <Main>
-    <registerFom>
-    <loginForm>
-    <userPage>
-      <wishLIst>
-        <createWishList>
-        <updateWishList>
-        <deleteWishlist>
-      <items>
-        <createItems>
-        <updateItems>
-        <deleteItems>
-  <Footer>
+    <RegisterFom>
+    <LoginForm>
+      <WishlistContainer>
+        <WishlistList>
+        <CreateWishlist>
+        <UpdateWishlist>
+        <SingleWishlist>
+      <ItemContainer>
+        <ItemList>
+        <CreateItem>
+        <UpdateItem>
 ```
 
 

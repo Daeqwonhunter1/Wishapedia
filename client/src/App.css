@@ -39,6 +39,7 @@ header h2 {
   color: #BFF6F9;
   text-decoration: none;
   position: relative;
+
 }
 header a, header a:active{
   text-decoration: none;
@@ -217,7 +218,9 @@ main {
 /* Register End */
 
 /* Login */
-.login-div, #create-wishlist-div, #create-item-div {
+
+.login-div, #create-wishlist-div, #create-item-div,#update-wishlist-div, #update-item-div {
+
   background-color: #BFF6F9;
   height: 100%;
   width: 100%;
@@ -226,7 +229,9 @@ main {
 }
 
 
-.login-div-form, .create-form  {
+
+.login-div-form,.create-form, .update-form{
+
   background-color: white;
   height: 500px;
   width: 50%;
@@ -311,7 +316,7 @@ main {
 
 #wishlist-list {
   text-align: center;
- 
+
 }
 
 .wishlist {
@@ -320,17 +325,83 @@ main {
   height: 300px;
   width: 300px;
   margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.wishlist h1 {
+  color: #3DA9F7;
+  font-size: 30px;
+  position: relative;
+  top: -20px
+}
+
+.description {
+  color: black;
+  /* opacity: 0; */
+  height:210px;
+  font-size:15px
+}
+
+
+.created-by {
+  color: blue;
+  position: relative;
+
+  top: 120px
+}
+
+.for {
+  position: relative;
+  top: -60px
 }
 
 #wishlists {
-  
-  height:100%;
-  width:100%;
-  display:flex;
+  height: 100%;
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
 
 }
 
+.description-modal {
+  position: relative;
+  left: 0;
+  top: -130px;
+  width: 100%;
+  height: 100%;
+  background-color: #3DA9F7;
+  opacity: 0;
+  
+  
+}
+
+.description-modal:hover {
+  opacity: 1;
+  /* animation:hover infinite 120s */
+}
+
+
+/* @keyframes hover {
+  80% {
+    opacity: 0.2;
+   
+  }
+  50% {
+    opacity: 0.5;
+  }
+
+  30% {
+    opacity:0.8
+  }
+
+  0% {
+    opacity:1
+  }
+
+} */
 #wishlist-list button {
   margin-top: 20px;
   width: 100px;
@@ -429,20 +500,24 @@ img {
   78% {
     transform: rotate(30deg);
   }
+
   68% {
     transform: rotate(40deg);
   }
+
   58% {
     transform: rotate(70deg);
   }
+
   50% {
     transform: rotate(100deg);
   }
+
   48% {
     transform: rotate(120deg);
   }
- 
-  
+
+
 
 }
 
@@ -455,14 +530,19 @@ img {
 #modal {
   display: none;
   position: fixed;
-  z-index: 1; /* Sit on top */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
 
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 #modal-content {
@@ -472,21 +552,23 @@ img {
   border: 1px solid #888;
   width: 80%;
 }
+
 #modal-content button {
-  width:100px;
-  height:40px
+  width: 100px;
+  height: 40px
 }
 
 #modal-content button:focus,
 #modal-content button:hover {
-  color:black;
-  background-color: rgba(0,0,0,0.4);
+  color: black;
+  background-color: rgba(0, 0, 0, 0.4);
 }
+
 #close {
   color: white;
   position: absolute;
-  top:0px;
-  left:10px;
+  top: 0px;
+  left: 10px;
   font-size: 50px;
   font-weight: bold;
   animation: x infinite 2s
@@ -496,12 +578,13 @@ img {
   89% {
     transform: rotate(30deg);
   }
+
   50% {
     transform: rotate(60deg);
     color: #BFF6F9;
 
   }
- 
+
 }
 
 #close:hover,
@@ -517,26 +600,35 @@ img {
   78% {
     transform: rotate(30deg);
   }
+
   68% {
     transform: rotate(40deg);
   }
+
   58% {
     transform: rotate(70deg);
   }
+
   50% {
     transform: rotate(100deg);
   }
+
   48% {
     transform: rotate(120deg);
   }
- 
+
   20% {
     transform: rotate(160deg);
   }
 }
-.create-header{
+
+
+.create-header, .update-header{
+
+
   color: blue;
   text-decoration: underline;
+  width: 400px;
 }
 
 .input-fields {
@@ -549,7 +641,9 @@ img {
   height: 20px;
 }
 
-.create-button  {
+
+.create-button, .update-button  {
+
   color: black;
   background-color: rgb(3, 172, 73);
   padding: 10px;
