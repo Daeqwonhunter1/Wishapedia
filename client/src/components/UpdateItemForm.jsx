@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { UpdateOneItem } from '../services/api-helper'
 
 class UpdateItemForm extends Component {
   state = {
@@ -41,6 +42,8 @@ class UpdateItemForm extends Component {
   }
 
   updateItems = async (wishlistId, itemId, itemData) => {
+    const updatedItems = await UpdateOneItem(wishlistId, itemId, itemData);
+
     this.setState({
       name: "",
       image_url: "",
