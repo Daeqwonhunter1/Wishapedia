@@ -9,7 +9,7 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 
 ## Feature List 
 
-###MVP
+### MVP
 * User Auth(Login/Register)
 * User creates a Wishlist
 * User adds items to wishlist
@@ -17,7 +17,7 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 * User Edits items on wishlist
 * Homepage which lists HOT items 
 
-###Post-MVP:
+### Post-MVP:
 * Animations
 * Mobile Friendly
 * User can add more Wishlists
@@ -75,7 +75,7 @@ Wishapedia is a full CRUD app with Authentication.  Registered users can create 
 * Axios
 * React-Router
 
-###Back-End Dependencies
+### Back-End Dependencies
 * Express
 * Express-Router
 * NPM
